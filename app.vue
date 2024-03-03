@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const locale = useCookie("locale");
+//const locale = useCookie("locale");
 </script>
 
 <template>

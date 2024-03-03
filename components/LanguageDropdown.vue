@@ -1,5 +1,8 @@
 <script setup lang="ts">
-const locale = useCookie("locale");
+const locale = useCookie("locale", {
+    sameSite: "strict",
+    secure: true,
+});
 
 const englishLanguageOptionItem = {
     label: "English",
@@ -16,13 +19,16 @@ const croatianLanguageOptionItem = {
 const languages = [englishLanguageOptionItem, croatianLanguageOptionItem];
 
 var selected = ref(languages[0]);
-if (locale.value) {
-    for (let language of languages) {
-        if (locale.value == language.value) {
-            selected = ref(language);
+
+onMounted(() => {
+    if (locale.value) {
+        for (let language of languages) {
+            if (locale.value == language.value) {
+                selected.value = language;
+            }
         }
     }
-}
+});
 
 watch(selected, (newValue) => {
     // Update the cookie with the new language value
@@ -35,7 +41,7 @@ watch(selected, (newValue) => {
         <template #leading>
             <UIcon
                 v-if="selected.icon"
-                :name="(selected.icon as string)"
+                :name="selected.icon as string"
                 class="w-4 h-4 mx-0.5"
             />
         </template>
