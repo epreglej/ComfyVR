@@ -1,0 +1,1 @@
+import{_ as o}from"./Header.DY_h4yIf.js";import{_ as t,c as n,b as r,o as c}from"./entry.B2j2l0tP.js";import"./Icon.C84m_rpF.js";import"./index.DKzsDYrr.js";import"./nuxt-link.Cdivzhr9.js";const _={};function a(s,m){const e=o;return c(),n("div",null,[r(e)])}const u=t(_,[["render",a]]);export{u as default};
