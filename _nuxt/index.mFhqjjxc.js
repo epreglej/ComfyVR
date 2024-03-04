@@ -1,0 +1,1 @@
+import{f as o,g as _,c as a,b as e,w as c,_ as s,o as u,O as r}from"./entry.sOwQDA8A.js";const x=o({__name:"index",setup(l){return _("locale",{sameSite:"none",secure:!0}),(m,p)=>{const t=r,n=s;return u(),a("div",null,[e(n,null,{default:c(()=>[e(t)]),_:1})])}}});export{x as default};
