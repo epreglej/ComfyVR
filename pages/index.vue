@@ -1,22 +1,17 @@
 <script setup lang="ts">
-const locale = useCookie("locale", {
-    sameSite: "none",
-    secure: true,
-});
+const { $locally } = useNuxtApp();
+const route = useRoute();
 
-console.log("Redirecting...");
-
-if (locale.value == croatianLanguage.code) {
-    navigateTo("/hr");
-} else {
-    navigateTo("/en");
+console.log($locally.getItem("language") == croatianLanguage.code);
+console.log(route.path);
+if ($locally.getItem("language") == croatianLanguage.code) {
+    console.log("Redirecting to croatian page!");
+    await navigateTo("/hr");
 }
 </script>
 
 <template>
     <div>
-        <NuxtLayout>
-            <NuxtPage />
-        </NuxtLayout>
+        <Header />
     </div>
 </template>

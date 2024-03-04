@@ -1,24 +1,22 @@
 <script setup lang="ts">
+const { $locally } = useNuxtApp();
+
 var selected = ref(languages[0]);
 
-function updateLocale(newValue: any) {
-    locale.value = newValue;
+function updateLanguage(newValue: any) {
+    $locally.setItem("language", newValue);
 }
 
-const locale = useCookie("locale", {
-    sameSite: "none",
-    secure: true,
-});
-
 onMounted(() => {
-    if (locale.value) {
+    if ($locally.getItem("language")) {
         for (let language of languages) {
-            if (locale.value == language.code) {
+            if ($locally.getItem("language") == language.code) {
                 selected.value = language;
             }
         }
     }
 });
+
 /*
 watch(selected, (newValue) => {
     // Update the cookie with the new language value
@@ -56,11 +54,11 @@ watch(selected, (newValue) => {
             >
                 <li>
                     <NuxtLink
-                        to="/en"
+                        to="/"
                         class="flex items-center justify-center px-3 py-2 text-md text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
                         role="menuitem"
                         @click="
-                            updateLocale(englishLanguage.code);
+                            updateLanguage(englishLanguage.code);
                             selected = englishLanguage;
                         "
                     >
@@ -77,7 +75,7 @@ watch(selected, (newValue) => {
                         class="flex items-center justify-center px-3 py-2 text-md text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
                         role="menuitem"
                         @click="
-                            updateLocale(croatianLanguage.code);
+                            updateLanguage(croatianLanguage.code);
                             selected = croatianLanguage;
                         "
                     >

@@ -1,10 +1,4 @@
-<script setup lang="ts">
-const locale = useCookie("locale", {
-    sameSite: "none",
-    secure: true,
-});
-locale.value = croatianLanguage.code;
-</script>
+<script setup lang="ts"></script>
 
 <template>
     <div>
