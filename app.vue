@@ -6,5 +6,9 @@ const locale = useCookie("locale", {
 </script>
 
 <template>
-    <NuxtPage />
+    <div>
+        <NuxtLayout>
+            <NuxtPage />
+        </NuxtLayout>
+    </div>
 </template>

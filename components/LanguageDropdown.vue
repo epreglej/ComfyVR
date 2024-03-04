@@ -1,10 +1,10 @@
 <script setup lang="ts">
+var selected = ref(languages[0]);
+
 const locale = useCookie("locale", {
     sameSite: "none",
     secure: true,
 });
-
-var selected = ref(languages[0]);
 
 onMounted(() => {
     if (locale.value) {
