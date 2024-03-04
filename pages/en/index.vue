@@ -3,7 +3,7 @@ const locale = useCookie("locale", {
     sameSite: "none",
     secure: true,
 });
-locale.value = englishLanguage.code;
+//locale.value = englishLanguage.code;
 </script>
 
 <template>
