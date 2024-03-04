@@ -1,0 +1,1 @@
+import{O as l,g as c,L as r}from"./entry.D1PV19ko.js";import{c as o}from"./languages.BB-x9giw.js";const i=l((a,t)=>{const e=c("locale",{sameSite:"none",secure:!0});if(console.log("Redirecting..."),a.path==="/"&&(console.log(e.value),console.log(o.code),console.log(e.value==o.code),e.value==o.code))return r("/hr")});export{i as default};

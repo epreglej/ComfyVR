@@ -1,1 +1,0 @@
-import{O as l,g as c}from"./entry.CkcLy8n6.js";import{c as o}from"./languages.BB-x9giw.js";const i=l((a,t)=>{const e=c("locale",{sameSite:"none",secure:!0});console.log("Redirecting..."),a.path==="/"&&(console.log(e.value),console.log(o.code),console.log(e.value==o.code),e.value==o.code)});export{i as default};
