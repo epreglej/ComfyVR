@@ -1,0 +1,1 @@
+import{O as r,g as t,L as e}from"./entry.D8vZvXyS.js";import{c as i}from"./languages.BB-x9giw.js";const u=r((a,n)=>{const o=t("locale",{sameSite:"none",secure:!0});if(a.path==="/")return o.value==i.code?e("/hr"):e("/en")});export{u as default};
