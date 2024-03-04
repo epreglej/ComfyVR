@@ -1,5 +1,8 @@
 export default defineNuxtRouteMiddleware((to, from) => {
-    const locale = useCookie("locale");
+    const locale = useCookie("locale", {
+        sameSite: "strict",
+        secure: true,
+    });
 
     if (to.path === "/") {
         if (locale.value == croatianLanguage.code) {
