@@ -10,7 +10,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
         console.log(croatianLanguage.code);
         console.log(locale.value == croatianLanguage.code);
         if (locale.value == croatianLanguage.code) {
-            //return navigateTo("/hr");
+            return navigateTo("/hr");
         } else {
             //return navigateTo("/en");
         }
