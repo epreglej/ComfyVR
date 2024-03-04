@@ -2,6 +2,11 @@
 import { onMounted } from "vue";
 import { initFlowbite } from "flowbite";
 
+const locale = useCookie("locale", {
+    sameSite: "none",
+    secure: true,
+});
+
 // initialize components based on data attribute selectors
 onMounted(() => {
     initFlowbite();

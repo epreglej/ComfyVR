@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const locale = useCookie("locale", {
-    sameSite: "strict",
+    sameSite: "none",
     secure: true,
 });
 

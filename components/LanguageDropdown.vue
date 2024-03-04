@@ -2,7 +2,7 @@
 //const locale = useLocale();
 
 const locale = useCookie("locale", {
-    sameSite: "strict",
+    sameSite: "none",
     secure: true,
 });
 

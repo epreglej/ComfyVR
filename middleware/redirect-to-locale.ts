@@ -1,6 +1,6 @@
 export default defineNuxtRouteMiddleware((to, from) => {
     const locale = useCookie("locale", {
-        sameSite: "strict",
+        sameSite: "none",
         secure: true,
     });
 
