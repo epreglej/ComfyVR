@@ -3,7 +3,7 @@ const locale = useCookie("locale", {
     sameSite: "none",
     secure: true,
 });
-//locale.value = croatianLanguage.code;
+locale.value = croatianLanguage.code;
 </script>
 
 <template>

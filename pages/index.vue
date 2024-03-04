@@ -1,12 +1,16 @@
 <script setup lang="ts">
-definePageMeta({
-    middleware: ["redirect-to-locale"],
-});
-
 const locale = useCookie("locale", {
     sameSite: "none",
     secure: true,
 });
+
+console.log("Redirecting...");
+
+if (locale.value == croatianLanguage.code) {
+    navigateTo("/hr");
+} else {
+    navigateTo("/en");
+}
 </script>
 
 <template>
