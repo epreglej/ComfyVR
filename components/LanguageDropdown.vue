@@ -1,6 +1,10 @@
 <script setup lang="ts">
 var selected = ref(languages[0]);
 
+function updateLocale(newValue: any) {
+    locale.value = newValue;
+}
+
 const locale = useCookie("locale", {
     sameSite: "none",
     secure: true,
@@ -15,11 +19,12 @@ onMounted(() => {
         }
     }
 });
-
+/*
 watch(selected, (newValue) => {
     // Update the cookie with the new language value
     locale.value = newValue.code;
 });
+*/
 </script>
 
 <template>
@@ -54,7 +59,10 @@ watch(selected, (newValue) => {
                         to="/en"
                         class="flex items-center justify-center px-3 py-2 text-md text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
                         role="menuitem"
-                        @click="selected = englishLanguage"
+                        @click="
+                            updateLocale(englishLanguage.code);
+                            selected = englishLanguage;
+                        "
                     >
                         <div class="inline-flex items-center">
                             <UIcon class="w-5 h-5" name="i-circle-flags-uk" />
@@ -68,7 +76,10 @@ watch(selected, (newValue) => {
                         to="/hr"
                         class="flex items-center justify-center px-3 py-2 text-md text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
                         role="menuitem"
-                        @click="selected = croatianLanguage"
+                        @click="
+                            updateLocale(croatianLanguage.code);
+                            selected = croatianLanguage;
+                        "
                     >
                         <div class="inline-flex items-center">
                             <UIcon class="w-5 h-5" name="i-circle-flags-hr" />
