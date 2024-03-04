@@ -2,12 +2,13 @@
 const { $locally } = useNuxtApp();
 const route = useRoute();
 
-console.log($locally.getItem("language") == croatianLanguage.code);
-console.log(route.path);
-if ($locally.getItem("language") == croatianLanguage.code) {
-    console.log("Redirecting to croatian page!");
-    await navigateTo("/hr");
-}
+onBeforeMount(() => {
+    if ($locally.getItem("language") == croatianLanguage.code) {
+        navigateTo({ path: "/hr" }, { external: true });
+    } else {
+        navigateTo({ path: "/en" }, { external: true });
+    }
+});
 </script>
 
 <template>
