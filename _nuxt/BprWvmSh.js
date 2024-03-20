@@ -1,0 +1,1 @@
+import{u as t,n as s}from"./CaScM7Pu.js";const c={__name:"logout",setup(n){const e=t();async function r(){try{const{error:o}=await e.auth.signOut();o?console.error("Logout error!"):(console.log("Logout successful!"),await s("/login"))}catch(o){console.error("Unexpected error:",o)}}return r(),()=>{}}};export{c as default};
