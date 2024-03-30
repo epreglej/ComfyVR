@@ -1,1 +1,0 @@
-import{u as e}from"./GGZacilb.js";import{r as t,c as r,o}from"./CTzS8_BO.js";const a={class:"lg:flex-grow lg:bg-gradient-to-r lg:from-white lg:to-blue-400 py-2"},m={__name:"user-management",setup(s){return e().setTitle("User management"),t(!1),(n,c)=>(o(),r("div",a," Hi "))}};export{m as default};
