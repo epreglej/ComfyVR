@@ -1,0 +1,1 @@
+import{r as e,v as t,t as r}from"./u5-olPax.js";const a={class:"lg:flex-grow lg:bg-gradient-to-r lg:from-white lg:to-blue-400 py-2"},c={__name:"user-management",setup(o){return e(!1),(s,l)=>(r(),t("div",a," Hi "))}};export{c as default};

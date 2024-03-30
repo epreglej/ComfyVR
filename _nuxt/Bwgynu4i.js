@@ -1,0 +1,1 @@
+import{r as e,v as l,t}from"./u5-olPax.js";const a={class:"flex flex-col w-full h-full px-4 lg:bg-gradient-to-r lg:from-white lg:to-blue-200"},n={__name:"app-management",setup(o){return e(!1),(r,s)=>(t(),l("div",a," Hello "))}};export{n as default};
