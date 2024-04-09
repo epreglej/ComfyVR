@@ -1,1 +1,0 @@
-import{_ as e}from"./H_5brHrU.js";import{_ as c,L as o,A as n,t as _,B as a}from"./Bv9U2hH1.js";const r={};function s(f,i){const t=e;return _(),o(t,null,{default:n(()=>[a("Click me!")]),_:1})}const d=c(r,[["render",s]]);export{d as default};

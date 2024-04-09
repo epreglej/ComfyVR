@@ -1,1 +1,0 @@
-import{d as t,a1 as n,q as s}from"./Bv9U2hH1.js";const i=t({__name:"logout",setup(a){const e=n();async function r(){try{const{error:o}=await e.auth.signOut();o?console.error("Logout error!"):(console.log("Logout successful!"),await s("/login"))}catch(o){console.error("Unexpected error:",o)}}return r(),(o,c)=>" Logging out... "}});export{i as default};
