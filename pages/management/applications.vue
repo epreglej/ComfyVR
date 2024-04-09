@@ -9,14 +9,14 @@ definePageMeta({
     <div class="main responsive page right active">
         <div>
             <div class="tabs">
-                <a href="#" class="active" data-ui="#add">
+                <NuxtLink class="active" data-ui="#add">
                     <i>home</i>
                     <span>Add a new app</span>
-                </a>
-                <a href="#" data-ui="#update">
+                </NuxtLink>
+                <NuxtLink data-ui="#update">
                     <i>home</i>
                     <span>Update an existing app</span>
-                </a>
+                </NuxtLink>
             </div>
             <div id="add" class="page padding active left">
                 <h5>Tab 1</h5>
