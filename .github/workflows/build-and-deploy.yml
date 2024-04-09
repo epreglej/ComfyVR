@@ -29,6 +29,15 @@ jobs:
         with:
           bun-version: latest # Specify the Bun version you want to use
 
+      - name: Create .env file (Secure Secret)
+        run: |
+          echo "SUPABASE_URL=${{ secrets.SUPABASE_URL }}" >> .env
+          echo "SUPABASE_KEY=${{ secrets.SUPABASE_KEY }}" >> .env
+        env:
+          # Mask the secret values in logs
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}"
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}"
+
       - name: Install & Generate
         run: |
           bun install
