@@ -11,7 +11,7 @@ export default {
 <template>
     <nav>
         <template v-if="currentPageName === 'Dashboard'">
-            <NuxtLink class="transparent circle large s">
+            <NuxtLink to="#" class="transparent circle large s">
                 <i>home</i>
             </NuxtLink>
         </template>

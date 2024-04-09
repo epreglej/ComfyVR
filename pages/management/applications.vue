@@ -9,11 +9,11 @@ definePageMeta({
     <div class="main responsive page right active">
         <div>
             <div class="tabs">
-                <a class="active" data-ui="#add">
+                <a href="#" class="active" data-ui="#add">
                     <i>home</i>
                     <span>Add a new app</span>
                 </a>
-                <a data-ui="#update">
+                <a href="#" data-ui="#update">
                     <i>home</i>
                     <span>Update an existing app</span>
                 </a>
