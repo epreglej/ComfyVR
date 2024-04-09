@@ -20,4 +20,14 @@ export default defineNuxtConfig({
     },
   },
   css: ["~/assets/css/additions.css"],
+  modules: ["@nuxtjs/supabase", "@hypernym/nuxt-gsap"],
+  supabase: {
+    redirectOptions: {
+      login: "/login",
+      callback: "/confirm",
+      include: ["/admin(/*)?"],
+      exclude: undefined,
+      cookieRedirect: false,
+    },
+  },
 });
