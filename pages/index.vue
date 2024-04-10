@@ -1,8 +1,28 @@
 <script setup>
 definePageMeta({
     layout: "medium-layout",
-    name: "Dashboard",
+    name: "Overview",
 });
+
+const isDialogEyesVisible = ref(false);
+const isDialogArmsVisible = ref(false);
+
+function toggleDialog(dialogRef) {
+    dialogRef.value = !dialogRef.value;
+}
+
+function closeAllDialogs() {
+    isDialogEyesVisible.value = false;
+    isDialogArmsVisible.value = false;
+}
+
+function generateRandomData(length, min, max) {
+    const data = [];
+    for (let i = 0; i < length; i++) {
+        data.push(Math.floor(Math.random() * (max - min + 1)) + min);
+    }
+    return data;
+}
 
 const chartOptions = computed(() => ({
     chart: {
@@ -25,6 +45,7 @@ const chartOptions = computed(() => ({
     pane: {
         startAngle: 0,
         endAngle: 360,
+        size: "80%",
     },
 
     xAxis: {
@@ -32,20 +53,30 @@ const chartOptions = computed(() => ({
         min: 0,
         max: 360,
         labels: {
+            distance: 20,
             formatter: function () {
-                const emojis = ["👁️", "👂", "🧠", "💪", "👣"];
+                const emojis = ["<i>home</i>", "👂", "🧠", "💪", "👣"];
                 return emojis[this.value / 72]; // Map the value to the corresponding emoji
             },
             style: {
                 fontSize: "28px", // Set the font size to 28px for emojis
+                opacity: 0.7, // Set the opacity to 30%
             },
+            useHTML: true,
+            allowOverlap: true,
         },
     },
 
     yAxis: {
         min: 0,
         max: 4, // Set the maximum value for the yAxis to 4
-        visible: 0,
+        visible: 1,
+        tickInterval: 1,
+        endOnTick: true,
+        showLastLabel: true,
+        labels: {
+            enabled: false, // Hide labels
+        },
     },
 
     plotOptions: {
@@ -60,6 +91,31 @@ const chartOptions = computed(() => ({
                 "rgba(70, 130, 180, 0.8)", // SteelBlue with 80% opacity
                 "rgba(154, 205, 50, 0.8)", // YellowGreen with 80% opacity
             ],
+            dataLabels: {
+                enabled: true, // Enable data labels
+                format: "{point.y}", // Format of the data label
+                color: "#ffffff", // Color of the data label text
+                align: "center",
+                verticalAlign: "middle",
+                style: {
+                    fontSize: "18px", // Font size of the data label text
+                },
+                inside: true,
+                useHTML: true,
+                zIndex: 9999,
+                allowOverlap: true,
+            },
+
+            point: {
+                events: {
+                    click: function () {
+                        const emojiIndex = this.index;
+                        if (emojiIndex === 0) {
+                            toggleDialog(isDialogEyesVisible);
+                        }
+                    },
+                },
+            },
         },
         column: {
             pointPadding: 0,
@@ -71,7 +127,7 @@ const chartOptions = computed(() => ({
         {
             type: "column",
             name: "Column 1",
-            data: [1, 2, 3, 4, 5], // Example data for the first column, now including legs
+            data: generateRandomData(5, 1, 4),
         },
     ],
 }));
@@ -89,5 +145,30 @@ const chartOptions = computed(() => ({
                 />
             </div>
         </div>
+
+        <div
+            v-if="isDialogEyesVisible || isDialogArmsVisible"
+            id="overlay-blur"
+            class="overlay blur active"
+        ></div>
+
+        <dialog v-if="isDialogEyesVisible" id="dialog-eyes" class="active">
+            <h5>Eyes</h5>
+            <div>Some text here</div>
+            <nav class="middle-align no-space">
+                <button class="transparent link" @click="closeAllDialogs()">
+                    Close
+                </button>
+            </nav>
+        </dialog>
+
+        <dialog v-if="isDialogArmsVisible" id="dialog-arms" class="active">
+            <h5>Arms</h5>
+            <div>Some text here</div>
+            <nav class="right-align no-space">
+                <button class="transparent link">Cancel</button>
+                <button class="transparent link">Confirm</button>
+            </nav>
+        </dialog>
     </div>
 </template>

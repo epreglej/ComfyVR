@@ -8,6 +8,21 @@ definePageMeta({
 <template>
     <div class="main responsive page right active">
         <div>
+            <!-- <nav class="no-space">
+                <button class="border left-round fill">
+                    <i>home</i>
+                    <span>Button</span>
+                </button>
+                <button class="border no-round">
+                    <i>home</i>
+                    <span>Button</span>
+                </button>
+                <button class="border right-round">
+                    <i>home</i>
+                    <span>Button</span>
+                </button>
+            </nav> -->
+
             <div class="tabs">
                 <NuxtLink class="active" data-ui="#add">
                     <i>home</i>

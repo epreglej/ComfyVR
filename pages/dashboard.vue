@@ -3,17 +3,30 @@ definePageMeta({
     layout: "medium-layout",
     name: "Dashboard",
 });
-// const { $gsap } = useNuxtApp();
-
-// onMounted(() => {
-//     $gsap.fromTo(".main", { x: 4000 }, { x: 0, duration: 2 });
-// });
 </script>
 
 <template>
     <div class="main responsive right page active">
         <!-- <div class="space"></div> -->
         <div class="grid horizontal-margin">
+            <div class="s12 m6 l4">
+                <NuxtLink to="/" class="wave round wrap">
+                    <article class="round no-elevate no-padding">
+                        <img
+                            class="responsive medium"
+                            src="https://lh3.googleusercontent.com/mLGakWFjdX3zGBIhCUWqzjlj3gUXOY8hOed_ISzomlpNmjKWUiqCFyNGGAZFneVaK30v4GUpjn7lyIsI2Z7KPvMKrYkumzBr2nwbVe3BQKRkpam3sA=w960"
+                            alt=""
+                        />
+                        <div class="large-padding">
+                            <h6>Overview</h6>
+                            <p>
+                                Jump back to the default page to explore all the
+                                applications in the system.
+                            </p>
+                        </div>
+                    </article>
+                </NuxtLink>
+            </div>
             <div class="s12 m6 l4">
                 <NuxtLink class="wave round wrap" to="/management/applications">
                     <article class="round no-elevate no-padding">
@@ -43,24 +56,6 @@ definePageMeta({
                         <div class="large-padding">
                             <h6>User management</h6>
                             <p>Create new admin accounts.</p>
-                        </div>
-                    </article>
-                </NuxtLink>
-            </div>
-            <div class="s12 m6 l4">
-                <NuxtLink to="/" class="wave round wrap">
-                    <article class="round no-elevate no-padding">
-                        <img
-                            class="responsive medium"
-                            src="https://lh3.googleusercontent.com/mLGakWFjdX3zGBIhCUWqzjlj3gUXOY8hOed_ISzomlpNmjKWUiqCFyNGGAZFneVaK30v4GUpjn7lyIsI2Z7KPvMKrYkumzBr2nwbVe3BQKRkpam3sA=w960"
-                            alt=""
-                        />
-                        <div class="large-padding">
-                            <h6>New: Figma design kit for M3</h6>
-                            <p>
-                                Jumpstart your designs with customizable,
-                                ready-made M3 components available in Figma
-                            </p>
                         </div>
                     </article>
                 </NuxtLink>

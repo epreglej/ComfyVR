@@ -20,7 +20,7 @@ export default defineNuxtConfig({
     },
   },
   css: ["~/assets/css/additions.css"],
-  modules: ["@nuxtjs/supabase", "@hypernym/nuxt-gsap", "nuxt-highcharts"],
+  modules: ["@nuxtjs/supabase", "nuxt-highcharts"],
 
   supabase: {
     redirectOptions: {
