@@ -20,7 +20,8 @@ export default defineNuxtConfig({
     },
   },
   css: ["~/assets/css/additions.css"],
-  modules: ["@nuxtjs/supabase", "@hypernym/nuxt-gsap"],
+  modules: ["@nuxtjs/supabase", "@hypernym/nuxt-gsap", "nuxt-highcharts"],
+
   supabase: {
     redirectOptions: {
       login: "/login",
