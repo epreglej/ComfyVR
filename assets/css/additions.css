@@ -2,11 +2,24 @@
     outline: 2px solid #000; /* Example style */
 }
 
+.large-icon {
+    display: flex;
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: black;
+}
+
 .highcharts-data-label span {
-    text-align: center;
-    border-radius: 100%;
-    padding-top: 3px;
-    padding-right: 5px;
-    padding-left: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px; /* Replace with your desired size */
+    height: 25px; /* Replace with your desired size */
     background-color: black;
+    border-radius: 50%;
+    color: white; /* Text color inside the circle */
 }

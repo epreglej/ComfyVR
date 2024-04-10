@@ -55,12 +55,17 @@ const chartOptions = computed(() => ({
         labels: {
             distance: 20,
             formatter: function () {
-                const emojis = ["<i>home</i>", "👂", "🧠", "💪", "👣"];
+                const emojis = [
+                    "<i class='large-icon red'>visibility</i>",
+                    "<i class='yellow-text large-icon'>brand_awareness</i>",
+                    "<i class='green-text large-icon'>brain</i>",
+                    "<i class='purple-text large-icon'>arms</i>",
+                    "<i class='red-text large-icon'>legs</i>",
+                ];
                 return emojis[this.value / 72]; // Map the value to the corresponding emoji
             },
             style: {
-                fontSize: "28px", // Set the font size to 28px for emojis
-                opacity: 0.7, // Set the opacity to 30%
+                fontSize: "32px",
             },
             useHTML: true,
             allowOverlap: true,
@@ -85,11 +90,11 @@ const chartOptions = computed(() => ({
             pointInterval: 72, // Adjusted to fit 5 labels evenly
             colorByPoint: true, // Assign a unique color to each point
             colors: [
-                "rgba(255, 99, 71, 0.8)", // Tomato with 80% opacity
-                "rgba(64, 224, 208, 0.8)", // Turquoise with 80% opacity
-                "rgba(255, 215, 0, 0.8)", // Gold with 80% opacity
-                "rgba(70, 130, 180, 0.8)", // SteelBlue with 80% opacity
-                "rgba(154, 205, 50, 0.8)", // YellowGreen with 80% opacity
+                "rgba(0, 191, 255, 0.8)",
+                "rgba(255, 195, 0, 0.8)",
+                "rgba(34, 160, 34, 0.8)",
+                "rgba(138,43,226, 0.8)",
+                "rgba(255, 0, 0, 0.8)",
             ],
             dataLabels: {
                 enabled: true, // Enable data labels
@@ -105,6 +110,8 @@ const chartOptions = computed(() => ({
                 zIndex: 9999,
                 allowOverlap: true,
             },
+            borderWidth: 3,
+            borderColor: "#FFFFFF",
 
             point: {
                 events: {
