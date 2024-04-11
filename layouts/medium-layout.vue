@@ -1,6 +1,9 @@
 <template>
-    <header class="s transparent">
-        <NavigationHeader />
-    </header>
-    <slot />
+    <body class="">
+        <main class="responsive">
+            <NavigationHeader />
+
+            <slot />
+        </main>
+    </body>
 </template>

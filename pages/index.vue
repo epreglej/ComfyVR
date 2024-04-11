@@ -45,7 +45,7 @@ const chartOptions = computed(() => ({
     pane: {
         startAngle: 0,
         endAngle: 360,
-        size: "80%",
+        size: "75%",
     },
 
     xAxis: {
@@ -56,11 +56,11 @@ const chartOptions = computed(() => ({
             distance: 20,
             formatter: function () {
                 const emojis = [
-                    "<i class='large-icon red'>visibility</i>",
-                    "<i class='yellow-text large-icon'>brand_awareness</i>",
-                    "<i class='green-text large-icon'>brain</i>",
-                    "<i class='purple-text large-icon'>arms</i>",
-                    "<i class='red-text large-icon'>legs</i>",
+                    "<i class='large-icon blue-text'>visibility</i>",
+                    "<i class='large-icon amber-text'>brand_awareness</i>",
+                    "<i class='large-icon green-text'>psychology</i>",
+                    "<i class='large-icon purple-text '>front_hand</i>",
+                    "<i class=' large-icon red-text'>barefoot</i>",
                 ];
                 return emojis[this.value / 72]; // Map the value to the corresponding emoji
             },
@@ -77,8 +77,6 @@ const chartOptions = computed(() => ({
         max: 4, // Set the maximum value for the yAxis to 4
         visible: 1,
         tickInterval: 1,
-        endOnTick: true,
-        showLastLabel: true,
         labels: {
             enabled: false, // Hide labels
         },
@@ -159,9 +157,20 @@ const chartOptions = computed(() => ({
             class="overlay blur active"
         ></div>
 
-        <dialog v-if="isDialogEyesVisible" id="dialog-eyes" class="active">
-            <h5>Eyes</h5>
-            <div>Some text here</div>
+        <dialog
+            v-if="isDialogEyesVisible"
+            id="dialog-eyes"
+            class="active center middle small-width"
+        >
+            <h6 class="center-align bottom-margin">Detailed information</h6>
+            <div class="vertical-margin horizontal-margin horizontal-padding">
+                <p>Must use eyes</p>
+                <p>Color go bright, eye hurt, ouch</p>
+                <p>Must use eyes</p>
+                <p>Color go bright, eye hurt, ouch</p>
+                <p>Must use eyes</p>
+                <p>Color go bright, eye hurt, ouch</p>
+            </div>
             <nav class="middle-align no-space">
                 <button class="transparent link" @click="closeAllDialogs()">
                     Close

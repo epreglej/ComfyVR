@@ -6,7 +6,7 @@ definePageMeta({
 </script>
 
 <template>
-    <div class="main responsive right page active">
+    <div class="main responsive right page active top-margin">
         <!-- <div class="space"></div> -->
         <div class="grid horizontal-margin">
             <div class="s12 m6 l4">
