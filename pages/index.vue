@@ -4,6 +4,8 @@ definePageMeta({
     name: "Overview",
 });
 
+const activeSeries = ref("comfort");
+
 const isDialogEyesVisible = ref(false);
 const isDialogArmsVisible = ref(false);
 
@@ -131,8 +133,21 @@ const chartOptions = computed(() => ({
     series: [
         {
             type: "column",
-            name: "Column 1",
+            name: "Comfort",
             data: generateRandomData(5, 1, 4),
+            visible: activeSeries.value === "comfort",
+        },
+        {
+            type: "column",
+            name: "Accessibility",
+            data: generateRandomData(5, 1, 4),
+            visible: activeSeries.value === "accessibility",
+        },
+        {
+            type: "column",
+            name: "Safety",
+            data: generateRandomData(5, 1, 4),
+            visible: activeSeries.value === "safety",
         },
     ],
 }));
@@ -187,4 +202,22 @@ const chartOptions = computed(() => ({
             </nav>
         </dialog>
     </div>
+
+    <nav class="bottom s tertiary-container">
+        <button class="transparent vertical" @click="activeSeries = 'comfort'">
+            <i>chair</i>
+            <span>Comfort</span>
+        </button>
+        <button
+            class="transparent vertical"
+            @click="activeSeries = 'accessibility'"
+        >
+            <i>person</i>
+            <span>Accessibility</span>
+        </button>
+        <button class="transparent vertical" @click="activeSeries = 'safety'">
+            <i>health_and_safety</i>
+            <span>Safety</span>
+        </button>
+    </nav>
 </template>

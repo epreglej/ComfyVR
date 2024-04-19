@@ -14,20 +14,23 @@ definePageMeta({
             <div id="update" class="page padding bottom">
                 <h5>Tab 2</h5>
             </div>
+            <div id="delete" class="page padding bottom">
+                <h5>Tab 3</h5>
+            </div>
         </div>
     </div>
-    <nav class="bottom s">
-        <NuxtLink data-ui="#add">
-            <i>add</i>
+    <nav class="bottom s tertiary-container">
+        <button class="transparent vertical" data-ui="#add">
+            <i>add_circle</i>
             <span>Add</span>
-        </NuxtLink>
-        <NuxtLink data-ui="#update">
-            <i>refresh</i>
+        </button>
+        <button class="transparent vertical" data-ui="#update">
+            <i>restore_page</i>
             <span>Update</span>
-        </NuxtLink>
-        <a>
+        </button>
+        <button class="transparent vertical" data-ui="#delete">
             <i>delete</i>
             <span>Delete</span>
-        </a>
+        </button>
     </nav>
 </template>
