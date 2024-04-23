@@ -1,30 +1,16 @@
 <script setup>
-import { useField, useForm } from "vee-validate";
+import { useField, useForm, ErrorMessage } from "vee-validate";
 import { toTypedSchema } from "@vee-validate/zod";
 import * as zod from "zod";
-
-// const applicationName = ref("");
-// const cameraMovement = ref("false");
-// const cameraMovementChoppy = ref("false");
-// const cameraMovementUnpredictable = ref("false");
-// const cameraMovementNoAlternativeMethods = ref("false");
-// const errors = ref([]);
 
 definePageMeta({
     layout: "applications-layout",
     name: "Add an application",
 });
 
-// watch(cameraMovement, (newValue) => {
-//     if (newValue === "false") {
-//         cameraMovementChoppy.value = "false";
-//         cameraMovementUnpredictable.value = "false";
-//         cameraMovementNoAlternativeMethods.value = "false";
-//     }
-// });
-
 const validationSchema = toTypedSchema(
     zod.object({
+        // applicationName: zod.string().min(1, "Application name is required"),
         applicationName: zod.string().min(1),
         cameraMovement: zod.string(),
     }),
@@ -35,7 +21,41 @@ const { handleSubmit, errors } = useForm({
 });
 
 const { value: applicationName } = useField("applicationName");
-const { value: cameraMovement } = useField("cameraMovement");
+const { value: cameraMovement } = useField("cameraMovement", zod.boolean(), {
+    initialValue: "false",
+});
+const { value: cameraMovementChoppy } = useField(
+    "cameraMovementChoppy",
+    zod.boolean(),
+    {
+        initialValue: "false",
+    },
+);
+const { value: cameraMovementUnpredictable } = useField(
+    "cameraMovementUnpredictable",
+    zod.boolean(),
+    {
+        initialValue: "false",
+    },
+);
+const { value: cameraMovementNoAlternativeMethods } = useField(
+    "cameraMovementNoAlternativeMethods",
+    zod.boolean(),
+    {
+        initialValue: "false",
+    },
+);
+const { value: avatarMovement } = useField("avatarMovement", zod.boolean(), {
+    initialValue: "false",
+});
+
+watch(cameraMovement, (newValue) => {
+    if (newValue === "false") {
+        cameraMovementChoppy.value = "false";
+        cameraMovementUnpredictable.value = "false";
+        cameraMovementNoAlternativeMethods.value = "false";
+    }
+});
 
 const onSubmit = handleSubmit((values) => {
     alert(JSON.stringify(values, null, 2));
@@ -45,24 +65,42 @@ const onSubmit = handleSubmit((values) => {
 <template>
     <div class="page right responsive active">
         <div class="horizontal-margin">
+        <div class="space"/>
             <article class="round">
                 <div class="horizontal-margin">
                     <form class="vertical" @submit.prevent="onSubmit">
-                        <div class="field label border round vertical-margin">
-                            <input
-                                type="text"
-                                aria-invalid="true"
-                                aria-describedby="addressError"
-                                v-model="applicationName"
-                            />
-                            <label>Application's name</label>
+                    <p class="top-margin center-align"><h6 class="center-align">Form</h6></p>
+                        <div class="vertical-margin">
+                            <div
+                                class="field label border round no-margin"
+                                :class="{ invalid: errors.applicationName }"
+                            >
+                                <input
+                                    type="text"
+                                    aria-invalid="true"
+                                    aria-describedby="addressError"
+                                    v-model="applicationName"
+                                />
+                                <label>Application's name</label>
+                                <ErrorMessage
+                                    class="horizontal-margin error-text"
+                                    name="applicationName"
+                                />
+                            </div>
                         </div>
 
-                        <span class="large-text bold horizontal-margin">
-                            To fully use the application:
-                        </span>
+                        <!-- <div
+                            v-if="applicationNameError"
+                            class="no-margin center-align error-text"
+                        >
+                            {{ applicationNameError }}
+                        </div> -->
 
-                        <div class="horizontal-margin vertical">
+                        <!-- <span class="large-text bold horizontal-margin">
+                            To fully use the application:
+                        </span> -->
+
+                        <div class="horizontal-margin vertical-margin vertical">
                             <span class="large-text">
                                 Application contains camera movement.
                             </span>
@@ -176,11 +214,30 @@ const onSubmit = handleSubmit((values) => {
                             </label>
                         </div>
 
-                        <div
-                            v-if="errors && errors.length"
-                            class="no-margin center-align error-text"
-                        >
-                            {{ errors[0] }}
+                        <div class="horizontal-margin top-margin vertical">
+                            <span class="large-text">
+                                Application contains avatar movement.
+                            </span>
+
+                            <label class="radio">
+                                <input
+                                    type="radio"
+                                    name="avatarMovement"
+                                    value="true"
+                                    v-model="avatarMovement"
+                                />
+                                <span>Yes</span>
+                            </label>
+
+                            <label class="radio">
+                                <input
+                                    type="radio"
+                                    name="avatarMovement"
+                                    value="false"
+                                    v-model="avatarMovement"
+                                />
+                                <span>No</span>
+                            </label>
                         </div>
 
                         <div class="vertical-margin center-align">

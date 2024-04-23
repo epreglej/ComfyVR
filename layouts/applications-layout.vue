@@ -1,9 +1,7 @@
 <template>
-    <body class="">
-        <main class="responsive">
-            <Header />
-            <slot />
-            <ManagementApplicationsFooter />
-        </main>
-    </body>
+    <main class="responsive">
+        <Header />
+        <slot />
+        <ManagementApplicationsFooter />
+    </main>
 </template>
