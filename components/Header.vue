@@ -18,7 +18,7 @@ export default {
         <template v-else>
             <NuxtLink
                 to="/dashboard"
-                class="transparent circle large s no-margin"
+                class="transparent circle large no-margin"
             >
                 <i>arrow_back</i>
             </NuxtLink>

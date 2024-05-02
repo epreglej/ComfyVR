@@ -28,7 +28,7 @@ definePageMeta({
                 </NuxtLink>
             </div>
             <div class="s12 m6 l4">
-                <NuxtLink class="wave round wrap" to="/management/applications">
+                <NuxtLink class="wave round wrap" to="/management/applications/add">
                     <article class="round no-elevate no-padding">
                         <img
                             class="responsive medium"

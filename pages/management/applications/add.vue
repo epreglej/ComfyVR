@@ -240,7 +240,7 @@ const onSubmit = handleSubmit((values) => {
                             </label>
                         </div>
 
-                        <div class="vertical-margin center-align">
+                        <div class="top-margin center-align">
                             <button type="submit">Submit</button>
                         </div>
                     </form>
