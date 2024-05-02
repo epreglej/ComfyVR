@@ -1,1 +1,0 @@
-import{_ as s}from"./Dz7_xqXC.js";import{_ as t,c as a,a as c,b as n,R as r,o as _}from"./De0R8DIU.js";import"./BvfbagKT.js";const d={},m={class:""},i={class:"responsive"};function l(e,p){const o=s;return _(),a("body",m,[c("main",i,[n(o),r(e.$slots,"default")])])}const x=t(d,[["render",l]]);export{x as default};

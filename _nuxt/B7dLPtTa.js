@@ -1,1 +1,0 @@
-import{s as t,x as s}from"./De0R8DIU.js";const u={__name:"logout",setup(n){const e=t();async function r(){try{const{error:o}=await e.auth.signOut();o?console.error("Logout error!"):(console.log("Logout successful!"),await s("/login"))}catch(o){console.error("Unexpected error:",o)}}return r(),(o,a)=>"Logging out..."}};export{u as default};
