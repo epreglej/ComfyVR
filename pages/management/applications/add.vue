@@ -45,15 +45,91 @@ const { value: cameraMovementNoAlternativeMethods } = useField(
         initialValue: "false",
     },
 );
-const { value: avatarMovement } = useField("avatarMovement", zod.boolean(), {
-    initialValue: "false",
-});
+const { value: locomotion } = useField(
+    "locomotion",
+    zod.boolean(),
+    {
+        initialValue: "false",
+    },
+);
+
+const { value: locomotionController } = useField(
+    "locomotionController",
+    zod.boolean(),
+    {
+        initialValue: "false",
+    },
+);
+
+const { value: locomotionTeleportation } = useField(
+    "locomotionTeleportation",
+    zod.boolean(),
+    {
+        initialValue: "false",
+    },
+);
+
+const { value: locomotionGestures } = useField(
+    "locomotionGestures",
+    zod.boolean(),
+    {
+        initialValue: "false",
+    },
+);
+
+const { value: visualSettings } = useField(
+    "visualSettings",
+    zod.boolean(),
+    {
+        initialValue: "false",
+    },
+);
+
+const { value: visualSettingsSubtitles } = useField(
+    "visualSettingsSubtitles",
+    zod.boolean(),
+    {
+        initialValue: "false",
+    },
+);
+
+const { value: visualSettingsVFX } = useField(
+    "visualSettingsVFX",
+    zod.boolean(),
+    {
+        initialValue: "false",
+    },
+);
+
+const { value: visualSettingsColorblind } = useField(
+    "visualSettingsColorblind",
+    zod.boolean(),
+    {
+        initialValue: "false",
+    },
+);
 
 watch(cameraMovement, (newValue) => {
     if (newValue === "false") {
         cameraMovementChoppy.value = "false";
         cameraMovementUnpredictable.value = "false";
         cameraMovementNoAlternativeMethods.value = "false";
+    }
+});
+
+watch(locomotion, (newValue) => {
+    if (newValue === "false") {
+        locomotionController.value = "false";
+        locomotionTeleportation.value = "false";
+        locomotionGestures.value = "false";
+    }
+});
+
+watch(visualSettings, (newValue) => {
+    if (newValue === "false") {
+        visualSettingsSubtitles.value = "false";
+        visualSettingsVFX.value = "false";
+        visualSettingsColorblind.value = "false";
     }
 });
 
@@ -89,18 +165,7 @@ const onSubmit = handleSubmit((values) => {
                             </div>
                         </div>
 
-                        <!-- <div
-                            v-if="applicationNameError"
-                            class="no-margin center-align error-text"
-                        >
-                            {{ applicationNameError }}
-                        </div> -->
-
-                        <!-- <span class="large-text bold horizontal-margin">
-                            To fully use the application:
-                        </span> -->
-
-                        <div class="horizontal-margin vertical-margin vertical">
+                        <div class="horizontal-margin top-margin vertical">
                             <span class="large-text">
                                 Application contains camera movement.
                             </span>
@@ -190,7 +255,7 @@ const onSubmit = handleSubmit((values) => {
                         >
                             <span class="large-text">
                                 Alternative camera movement methods not
-                                supported.
+                                supported (e.g. snap turning).
                             </span>
 
                             <label class="radio">
@@ -216,15 +281,15 @@ const onSubmit = handleSubmit((values) => {
 
                         <div class="horizontal-margin top-margin vertical">
                             <span class="large-text">
-                                Application contains avatar movement.
+                                Application contains avatar movement (locomotion).
                             </span>
 
                             <label class="radio">
                                 <input
                                     type="radio"
-                                    name="avatarMovement"
+                                    name="locomotion"
                                     value="true"
-                                    v-model="avatarMovement"
+                                    v-model="locomotion"
                                 />
                                 <span>Yes</span>
                             </label>
@@ -232,9 +297,209 @@ const onSubmit = handleSubmit((values) => {
                             <label class="radio">
                                 <input
                                     type="radio"
-                                    name="avatarMovement"
+                                    name="locomotion"
                                     value="false"
-                                    v-model="avatarMovement"
+                                    v-model="locomotion"
+                                />
+                                <span>No</span>
+                            </label>
+                        </div>
+
+                        <div 
+                            class="horizontal-margin top-margin vertical"
+                            v-if="locomotion && locomotion === 'true'"
+                        >
+                            <span class="large-text">
+                                Controller-based locomotion supported.
+                            </span>
+
+                            <label class="radio">
+                                <input
+                                    type="radio"
+                                    name="locomotionController"
+                                    value="true"
+                                    v-model="locomotionController"
+                                />
+                                <span>Yes</span>
+                            </label>
+
+                            <label class="radio">
+                                <input
+                                    type="radio"
+                                    name="locomotionController"
+                                    value="false"
+                                    v-model="locomotionController"
+                                />
+                                <span>No</span>
+                            </label>
+                        </div>
+
+                        <div 
+                            class="horizontal-margin top-margin vertical"
+                            v-if="locomotion && locomotion === 'true'"
+                        >
+                            <span class="large-text">
+                                Teleportation locomotion supported.
+                            </span>
+
+                            <label class="radio">
+                                <input
+                                    type="radio"
+                                    name="locomotionTeleportation"
+                                    value="true"
+                                    v-model="locomotionTeleportation"
+                                />
+                                <span>Yes</span>
+                            </label>
+
+                            <label class="radio">
+                                <input
+                                    type="radio"
+                                    name="locomotionTeleportation"
+                                    value="false"
+                                    v-model="locomotionTeleportation"
+                                />
+                                <span>No</span>
+                            </label>
+                        </div>
+
+                        <div 
+                            class="horizontal-margin top-margin vertical"
+                            v-if="locomotion && locomotion === 'true'"
+                        >
+                            <span class="large-text">
+                                Natural gestures locomotion supported.
+                            </span>
+
+                            <label class="radio">
+                                <input
+                                    type="radio"
+                                    name="locomotionGestures"
+                                    value="true"
+                                    v-model="locomotionGestures"
+                                />
+                                <span>Yes</span>
+                            </label>
+
+                            <label class="radio">
+                                <input
+                                    type="radio"
+                                    name="locomotionGestures"
+                                    value="false"
+                                    v-model="locomotionGestures"
+                                />
+                                <span>No</span>
+                            </label>
+                        </div>
+
+                        <div class="horizontal-margin top-margin vertical">
+                            <span class="large-text">
+                                Application supports personalization of visual settings.
+                            </span>
+
+                            <label class="radio">
+                                <input
+                                    type="radio"
+                                    name="visualSettings"
+                                    value="true"
+                                    v-model="visualSettings"
+                                />
+                                <span>Yes</span>
+                            </label>
+
+                            <label class="radio">
+                                <input
+                                    type="radio"
+                                    name="visualSettings"
+                                    value="false"
+                                    v-model="visualSettings"
+                                />
+                                <span>No</span>
+                            </label>
+                        </div>
+
+                        <div
+                            class="horizontal-margin top-margin vertical"
+                            v-if="visualSettings && visualSettings === 'true'"
+                        >
+                            <span class="large-text">
+                                Subtitles supported.
+                            </span>
+
+                            <label class="radio">
+                                <input
+                                    type="radio"
+                                    name="visualSettingsSubtitles"
+                                    value="true"
+                                    v-model="visualSettingsSubtitles"
+                                />
+                                <span>Yes</span>
+                            </label>
+
+                            <label class="radio">
+                                <input
+                                    type="radio"
+                                    name="visualSettingsSubtitles"
+                                    value="false"
+                                    v-model="visualSettingsSubtitles"
+                                />
+                                <span>No</span>
+                            </label>
+                        </div>
+
+                        <div
+                            class="horizontal-margin top-margin vertical"
+                            v-if="visualSettings && visualSettings === 'true'"
+                        >
+                            <span class="large-text">
+                                VFX intensity personalization supported.
+                            </span>
+
+                            <label class="radio">
+                                <input
+                                    type="radio"
+                                    name="visualSettingsVFX"
+                                    value="true"
+                                    v-model="visualSettingsVFX"
+                                />
+                                <span>Yes</span>
+                            </label>
+
+                            <label class="radio">
+                                <input
+                                    type="radio"
+                                    name="visualSettingsVFX"
+                                    value="false"
+                                    v-model="visualSettingsVFX"
+                                />
+                                <span>No</span>
+                            </label>
+                        </div>
+
+                        <div
+                            class="horizontal-margin top-margin vertical"
+                            v-if="visualSettings && visualSettings === 'true'"
+                        >
+                            <span class="large-text">
+                                Colorblind mode supported.
+                            </span>
+
+                            <label class="radio">
+                                <input
+                                    type="radio"
+                                    name="visualSettingsColorblind"
+                                    value="true"
+                                    v-model="visualSettingsColorblind"
+                                />
+                                <span>Yes</span>
+                            </label>
+
+                            <label class="radio">
+                                <input
+                                    type="radio"
+                                    name="visualSettingsColorblind"
+                                    value="false"
+                                    v-model="visualSettingsColorblind"
                                 />
                                 <span>No</span>
                             </label>
@@ -243,6 +508,7 @@ const onSubmit = handleSubmit((values) => {
                         <div class="top-margin center-align">
                             <button type="submit">Submit</button>
                         </div>
+
                     </form>
                 </div>
             </article>
