@@ -31,4 +31,11 @@ export default defineNuxtConfig({
       cookieRedirect: false,
     },
   },
+
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      failOnError: false,
+    },
+  },
 });
