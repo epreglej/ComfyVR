@@ -1,35 +1,36 @@
-<template>
-    <form @submit="onSubmit">
-        <input name="email" v-model="email" type="email" />
-        <span>{{ errors.email }}</span>
-
-        <input name="password" v-model="password" type="password" />
-        <span>{{ errors.password }}</span>
-
-        <button>Submit</button>
-    </form>
-</template>
-
 <script setup>
-import { useField, useForm } from "vee-validate";
-import { toTypedSchema } from "@vee-validate/zod";
-import * as zod from "zod";
+const client = useSupabaseClient();
 
-const validationSchema = toTypedSchema(
-    zod.object({
-        email: zod.string().min(1).email({ message: "Must be a valid email" }),
-        password: zod.string().min(1).min(8, { message: "Too short" }),
-    }),
-);
+let records = [];
 
-const { handleSubmit, errors } = useForm({
-    validationSchema,
-});
+try {
+    const { data, error } = await client.from("applications").select("*");
 
-const { value: email } = useField("email");
-const { value: password } = useField("password");
+    if (error) {
+        console.error("Error during insertion:", error);
+    } else {
+        console.log("Record successfully read:", data);
+        records = data;
+    }
+} catch (error) {
+    console.error("Error:", error);
+}
 
-const onSubmit = handleSubmit((values) => {
-    alert(JSON.stringify(values, null, 2));
-});
+for (let record of records) {
+    record.applicationLink = "./ratings/" + record.id + "/comfort";
+}
 </script>
+
+<template>
+    <div v-for="record in records" :key="record.id">
+        <NuxtLink
+            class="button transparent vertical"
+            :to="record.applicationLink"
+        >
+            <i class="extra">
+                <img class="" :src="record.applicationIconLink" />
+            </i>
+            <span class="large-text">{{ record.applicationName }}</span>
+        </NuxtLink>
+    </div>
+</template>

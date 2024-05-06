@@ -1,8 +1,11 @@
 <script setup>
 definePageMeta({
     layout: "ratings-layout",
-    name: "Overview",
+    name: "Comfort",
 });
+
+const route = useRoute();
+const client = useSupabaseClient();
 
 const isDialogEyesVisible = ref(false);
 const isDialogArmsVisible = ref(false);
@@ -22,6 +25,24 @@ function generateRandomData(length, min, max) {
         data.push(Math.floor(Math.random() * (max - min + 1)) + min);
     }
     return data;
+}
+
+let record = null;
+
+try {
+    const { data, error } = await client
+        .from("applications")
+        .select("*")
+        .eq("id", route.params.id);
+
+    if (error) {
+        console.error("Error during insertion:", error);
+    } else {
+        console.log("Record successfully read:", data);
+        record = data[0];
+    }
+} catch (error) {
+    console.error("Error:", error);
 }
 
 const chartOptions = computed(() => ({
@@ -150,6 +171,11 @@ const chartOptions = computed(() => ({
                 />
             </div>
         </div>
+
+        <i class="extra">
+            <img class="" :src="record.applicationIconLink" />
+        </i>
+        <span class="large-text">{{ record.applicationName }}</span>
 
         <div
             v-if="isDialogEyesVisible || isDialogArmsVisible"
