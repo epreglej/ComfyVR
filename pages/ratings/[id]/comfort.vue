@@ -10,6 +10,26 @@ const client = useSupabaseClient();
 const isDialogEyesVisible = ref(false);
 const isDialogArmsVisible = ref(false);
 
+let record = null;
+
+// try {
+//     const { data, error } = await client
+//         .from("applications")
+//         .select("*")
+//         .eq("id", route.params.id);
+
+//     if (error) {
+//         console.error("Error during insertion:", error);
+//     } else {
+//         console.log("Record successfully read:", data);
+//         record = data[0];
+//     }
+// } catch (error) {
+//     console.error("Error:", error);
+// }
+
+//calculateComfortRating();
+
 function toggleDialog(dialogRef) {
     dialogRef.value = !dialogRef.value;
 }
@@ -19,6 +39,34 @@ function closeAllDialogs() {
     isDialogArmsVisible.value = false;
 }
 
+/*
+function calculateComfortRating() {
+    // eyes, ears, head, arms, legs
+    const rating = [4, 4, 4, 4, 4];
+
+    Object.entries(record).forEach(([key, value]) => {
+        if (
+            key === "id" ||
+            key === "applicationName" ||
+            key === "applicationIconLink"
+        ) {
+        } else if (key === "cameraMovement") {
+        } else if (key === "cameraMovementChoppy") {
+            if (value === "yes") {
+                rating[0] = rating[0] - 1;
+                rating[1] = rating[1] - 1;
+            }
+        } else if (key === "cameraMovementNoAlternativeMethods") {
+            if (value === "yes") {
+                rating[0] = rating[0] - 1;
+            }
+        } else if (key === "cameraMovementUnpredictable") {
+            rating[0] = rating[0] - 1;
+            rating[1] = rating[1] - 1;
+        }
+    });
+}*/
+
 function generateRandomData(length, min, max) {
     const data = [];
     for (let i = 0; i < length; i++) {
@@ -26,158 +74,65 @@ function generateRandomData(length, min, max) {
     }
     return data;
 }
-
-let record = null;
-
-try {
-    const { data, error } = await client
-        .from("applications")
-        .select("*")
-        .eq("id", route.params.id);
-
-    if (error) {
-        console.error("Error during insertion:", error);
-    } else {
-        console.log("Record successfully read:", data);
-        record = data[0];
-    }
-} catch (error) {
-    console.error("Error:", error);
-}
-
-const chartOptions = computed(() => ({
-    chart: {
-        polar: true,
-        backgroundColor: "transparent", // Make the chart's background transparent
-    },
-
-    title: {
-        text: null, // This will hide the title
-    },
-
-    legend: {
-        enabled: false, // This will hide the legend
-    },
-
-    tooltip: {
-        enabled: false, // This will disable the tooltip
-    },
-
-    pane: {
-        startAngle: 0,
-        endAngle: 360,
-        size: "75%",
-    },
-
-    xAxis: {
-        tickInterval: 72, // Adjusted to fit 5 labels evenly
-        min: 0,
-        max: 360,
-        labels: {
-            distance: 20,
-            formatter: function () {
-                const emojis = [
-                    "<i class='large-icon blue-text'>visibility</i>",
-                    "<i class='large-icon amber-text'>brand_awareness</i>",
-                    "<i class='large-icon green-text'>psychology</i>",
-                    "<i class='large-icon purple-text '>front_hand</i>",
-                    "<i class=' large-icon red-text'>barefoot</i>",
-                ];
-                return emojis[this.value / 72]; // Map the value to the corresponding emoji
-            },
-            style: {
-                fontSize: "32px",
-            },
-            useHTML: true,
-            allowOverlap: true,
-        },
-    },
-
-    yAxis: {
-        min: 0,
-        max: 4, // Set the maximum value for the yAxis to 4
-        visible: 1,
-        tickInterval: 1,
-        labels: {
-            enabled: false, // Hide labels
-        },
-    },
-
-    plotOptions: {
-        series: {
-            pointStart: 0,
-            pointInterval: 72, // Adjusted to fit 5 labels evenly
-            colorByPoint: true, // Assign a unique color to each point
-            colors: [
-                "rgba(0, 191, 255, 0.8)",
-                "rgba(255, 195, 0, 0.8)",
-                "rgba(34, 160, 34, 0.8)",
-                "rgba(138,43,226, 0.8)",
-                "rgba(255, 0, 0, 0.8)",
-            ],
-            dataLabels: {
-                enabled: true, // Enable data labels
-                format: "{point.y}", // Format of the data label
-                color: "#ffffff", // Color of the data label text
-                align: "center",
-                verticalAlign: "middle",
-                style: {
-                    fontSize: "18px", // Font size of the data label text
-                },
-                inside: true,
-                useHTML: true,
-                zIndex: 9999,
-                allowOverlap: true,
-            },
-            borderWidth: 3,
-            borderColor: "#FFFFFF",
-
-            point: {
-                events: {
-                    click: function () {
-                        const emojiIndex = this.index;
-                        if (emojiIndex === 0) {
-                            toggleDialog(isDialogEyesVisible);
-                        }
-                    },
-                },
-            },
-        },
-        column: {
-            pointPadding: 0,
-            groupPadding: 0,
-        },
-    },
-
-    series: [
-        {
-            type: "column",
-            name: "Comfort",
-            data: generateRandomData(5, 1, 4),
-        },
-    ],
-}));
 </script>
 
 <template>
-    <div class="main responsive right page active">
-        <div class="horizontal-margin">
-            <div class="space"></div>
-            <div class="circle medium-width medium-height center">
-                <highchart
-                    :modules="['accessibility']"
-                    :options="chartOptions"
-                    :more="true"
-                />
-            </div>
-        </div>
-
-        <i class="extra">
+    <div class="main responsive right page active center-align">
+        <!-- <i class="extra">
             <img class="" :src="record.applicationIconLink" />
         </i>
-        <span class="large-text">{{ record.applicationName }}</span>
+        <span class="large-text">{{ record.applicationName }}</span> -->
+        <span>Minecraft</span>
 
-        <div
+        <article class="medium no-elevate surface">
+            <div class="absolute center">
+                <div class="stickman-wrapper">
+                    <NuxtLink class="head" to="./head"></NuxtLink>
+                    <NuxtLink class="torso" to="./stomach"></NuxtLink>
+                    <NuxtLink
+                        href="#"
+                        class="leftarm"
+                        data-ui="#leftarm-dialog"
+                    ></NuxtLink>
+                    <div class="rightarm"></div>
+                    <div class="leftleg"></div>
+                    <NuxtLink
+                        href="#"
+                        class="rightleg"
+                        data-ui="#rightleg-dialog"
+                    ></NuxtLink>
+                </div>
+            </div>
+        </article>
+
+        <table class="top-margin large-margin center-align large-width center">
+            <tbody>
+                <tr>
+                    <td class="large-text bold">Comfort</td>
+                    <td class="large-text bold">Accessibility</td>
+                    <td class="large-text bold">Safety</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>4</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="overlay blur"></div>
+
+        <dialog id="leftarm-dialog">
+            <h5>Custom overlay</h5>
+            <div>Some text here</div>
+            <nav class="right-align no-space">
+                <button class="transparent link" data-ui="#leftarm-dialog">
+                    Close
+                </button>
+            </nav>
+        </dialog>
+
+        <!-- <div
             v-if="isDialogEyesVisible || isDialogArmsVisible"
             id="overlay-blur"
             class="overlay blur active"
@@ -211,6 +166,6 @@ const chartOptions = computed(() => ({
                 <button class="transparent link">Cancel</button>
                 <button class="transparent link">Confirm</button>
             </nav>
-        </dialog>
+        </dialog> -->
     </div>
 </template>

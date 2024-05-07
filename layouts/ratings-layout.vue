@@ -3,7 +3,7 @@
         <main class="responsive">
             <Header />
             <slot />
-            <RatingsFooter />
+            <!-- <RatingsFooter /> -->
         </main>
     </body>
 </template>
