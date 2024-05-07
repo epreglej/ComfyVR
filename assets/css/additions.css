@@ -33,6 +33,7 @@
     height: 300px;
     position: relative;
     animation: pop-in 1s;
+    z-index: 1;
 }
 
 .head {
@@ -53,6 +54,10 @@
     outline: 4px solid red;
 }
 
+.head:hover {
+    outline: 4px solid red;
+}
+
 .leftear {
     width: 15px;
     height: 20px;
@@ -67,6 +72,10 @@
 }
 
 .leftear:focus-visible {
+    outline: 4px solid red;
+}
+
+.leftear:hover {
     outline: 4px solid red;
 }
 
@@ -87,6 +96,10 @@
     outline: 4px solid red;
 }
 
+.rightear:hover {
+    outline: 4px solid red;
+}
+
 .lefteye {
     width: 10px;
     height: 10px;
@@ -104,6 +117,10 @@
     outline: 4px solid red;
 }
 
+.lefteye:hover {
+    outline: 4px solid red;
+}
+
 .righteye {
     width: 10px;
     height: 10px;
@@ -118,6 +135,10 @@
 }
 
 .righteye:focus-visible {
+    outline: 4px solid red;
+}
+
+.righteye:hover {
     outline: 4px solid red;
 }
 
@@ -162,6 +183,10 @@
     outline: 4px solid red;
 }
 
+.stomach:hover {
+    outline: 4px solid red;
+}
+
 .leftleg {
     width: 12px;
     height: 100px;
@@ -176,6 +201,10 @@
 }
 
 .leftleg:focus-visible {
+    outline: 4px solid red;
+}
+
+.leftleg:hover {
     outline: 4px solid red;
 }
 
@@ -196,6 +225,10 @@
     outline: 4px solid red;
 }
 
+.rightleg:hover {
+    outline: 4px solid red;
+}
+
 .leftarm {
     width: 70px;
     height: 6px;
@@ -213,6 +246,10 @@
     outline: 4px solid red;
 }
 
+.leftarm:hover {
+    outline: 4px solid red;
+}
+
 .rightarm {
     width: 70px;
     height: 6px;
@@ -227,6 +264,10 @@
 }
 
 .rightarm:focus-visible {
+    outline: 4px solid red;
+}
+
+.rightarm:hover {
     outline: 4px solid red;
 }
 

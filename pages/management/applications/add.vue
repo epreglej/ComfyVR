@@ -17,7 +17,7 @@ const validationSchema = toTypedSchema(
         cameraMovement: zod.string(),
         cameraMovementChoppy: zod.string(),
         cameraMovementUnpredictable: zod.string(),
-        cameraMovementNoAlternativeMethods: zod.string(),
+        cameraMovementAlternativeMethods: zod.string(),
         visualSettings: zod.string(),
         visualSettingsSubtitles: zod.string(),
         visualSettingsVFX: zod.string(),
@@ -29,7 +29,6 @@ const validationSchema = toTypedSchema(
         inputSettings: zod.string(),
         inputSettingsAlternativeMovement: zod.string(),
         inputSettingsRemapping: zod.string(),
-        inputSettingsMultipleInputDevices: zod.string(),
         inputSettingsAimAssist: zod.string(),
     }),
 );
@@ -62,8 +61,8 @@ const { value: cameraMovementUnpredictable } = useField(
     },
 );
 
-const { value: cameraMovementNoAlternativeMethods } = useField(
-    "cameraMovementNoAlternativeMethods",
+const { value: cameraMovementAlternativeMethods } = useField(
+    "cameraMovementAlternativeMethods",
     zod.boolean(),
     {
         initialValue: "false",
@@ -158,14 +157,6 @@ const { value: inputSettingsRemapping } = useField(
     },
 );
 
-const { value: inputSettingsMultipleInputDevices } = useField(
-    "inputSettingsMultipleInputDevices",
-    zod.boolean(),
-    {
-        initialValue: "false",
-    },
-);
-
 const { value: inputSettingsAimAssist } = useField(
     "inputSettingsAimAssist",
     zod.boolean(),
@@ -178,7 +169,7 @@ watch(cameraMovement, (newValue) => {
     if (newValue === "false") {
         cameraMovementChoppy.value = "false";
         cameraMovementUnpredictable.value = "false";
-        cameraMovementNoAlternativeMethods.value = "false";
+        cameraMovementAlternativeMethods.value = "false";
     }
 });
 
@@ -202,7 +193,6 @@ watch(inputSettings, (newValue) => {
     if (newValue === "false") {
         inputSettingsAlternativeMovement.value = "false";
         inputSettingsRemapping.value = "false";
-        inputSettingsMultipleInputDevices.value = "false";
         inputSettingsAimAssist.value = "false";
     }
 });
@@ -217,7 +207,7 @@ const onSubmit = handleSubmit(async (values) => {
             cameraMovement: values.cameraMovement === "true",
             cameraMovementChoppy: values.cameraMovementChoppy === "true",
             cameraMovementUnpredictable: values.cameraMovementUnpredictable ==="true",
-            cameraMovementNoAlternativeMethods: values.cameraMovementNoAlternativeMethods === "true",
+            cameraMovementAlternativeMethods: values.cameraMovementAlternativeMethods === "true",
             visualSettings: values.visualSettings === "true",
             visualSettingsSubtitles: values.visualSettingsSubtitles === "true",
             visualSettingsVFX: values.visualSettingsVFX === "true",
@@ -229,7 +219,6 @@ const onSubmit = handleSubmit(async (values) => {
             inputSettings: values.inputSettings === "true",
             inputSettingsAlternativeMovement: values.inputSettingsAlternativeMovement === "true",
             inputSettingsRemapping: values.inputSettingsRemapping === "true",
-            inputSettingsMultipleInputDevices: values.inputSettingsMultipleInputDevices === "true",
             inputSettingsAimAssist: values.inputSettingsAimAssist === "true",
         });
 
@@ -360,16 +349,15 @@ const onSubmit = handleSubmit(async (values) => {
                             v-if="cameraMovement === 'true'"
                         >
                             <span class="large-text">
-                                Alternative camera movement methods not
-                                supported (e.g. snap turning).
+                                Alternative camera movement methods supported (e.g. snap turning).
                             </span>
 
                             <label class="radio">
                                 <input
                                     type="radio"
-                                    name="cameraMovementNoAlternativeMethods"
+                                    name="cameraMovementAlternativeMethods"
                                     value="true"
-                                    v-model="cameraMovementNoAlternativeMethods"
+                                    v-model="cameraMovementAlternativeMethods"
                                 />
                                 <span>Yes</span>
                             </label>
@@ -377,9 +365,9 @@ const onSubmit = handleSubmit(async (values) => {
                             <label class="radio">
                                 <input
                                     type="radio"
-                                    name="cameraMovementNoAlternativeMethods"
+                                    name="cameraMovementAlternativeMethods"
                                     value="false"
-                                    v-model="cameraMovementNoAlternativeMethods"
+                                    v-model="cameraMovementAlternativeMethods"
                                 />
                                 <span>No</span>
                             </label>
@@ -464,35 +452,6 @@ const onSubmit = handleSubmit(async (values) => {
                                     name="inputSettingsRemapping"
                                     value="false"
                                     v-model="inputSettingsRemapping"
-                                />
-                                <span>No</span>
-                            </label>
-                        </div>
-
-                        <div
-                            class="horizontal-margin top-margin vertical"
-                            v-if="inputSettings && inputSettings === 'true'"
-                        >
-                            <span class="large-text">
-                                Multiple input devices suppported.
-                            </span>
-
-                            <label class="radio">
-                                <input
-                                    type="radio"
-                                    name="inputSettingsMultipleInputDevices"
-                                    value="true"
-                                    v-model="inputSettingsMultipleInputDevices"
-                                />
-                                <span>Yes</span>
-                            </label>
-
-                            <label class="radio">
-                                <input
-                                    type="radio"
-                                    name="inputSettingsMultipleInputDevices"
-                                    value="false"
-                                    v-model="inputSettingsMultipleInputDevices"
                                 />
                                 <span>No</span>
                             </label>

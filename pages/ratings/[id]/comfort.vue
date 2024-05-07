@@ -71,11 +71,7 @@ const chartOptions = {
         <article class="medium no-elevate surface">
             <div class="absolute center">
                 <div class="stickman-wrapper">
-                    <NuxtLink
-                        to="#"
-                        class="head"
-                        data-ui="#head-dialog"
-                    ></NuxtLink>
+                    <a href="#" class="head" data-ui="#head-dialog"></a>
                     <NuxtLink
                         to="#"
                         class="leftear"
@@ -154,12 +150,62 @@ const chartOptions = {
 
         <div class="overlay blur"></div>
         <dialog id="head-dialog" class="left-align">
-            <h5 class="bold">Comfort</h5>
-
-            <ul class="margin">
+            <h6 class="bold">Comfort</h6>
+            <ul class="small-margin">
                 <li v-if="record.cameraMovementChoppy">
-                    Camera may look choppy and induce
-                    <span class="bold"> headaches </span>
+                    Camera movement may look choppy, resulting in
+                    <span class="bold"> headache </span>
+                </li>
+                <li v-if="record.cameraMovementUnpredictable">
+                    Camera may move unexpectedly or shake a lot, resulting in
+                    <span class="bold">headache</span> and
+                    <span class="bold"> disorientation</span>
+                </li>
+                <li v-if="!record.inputSettingsAlternativeMovement">
+                    Alternative movement methods (e.g. teleportation) not
+                    supported, may result in <span class="bold">headache</span>
+                </li>
+            </ul>
+
+            <h6 class="bold">Accessibility</h6>
+            <ul class="small-margin">
+                <li v-if="!record.cameraMovementAlternativeMethods">
+                    Alternative camera movement methods (e.g. snap turning) not
+                    supported, may result in
+                    <span class="bold">headache</span> and
+                    <span class="bold"> disorientation</span>
+                </li>
+
+                <li v-if="!record.visualSettingsSubtitles">
+                    Subtitles not available, may result in
+                    <span class="bold">lack of context</span> and
+                    <span class="bold">confusion</span>
+                </li>
+
+                <li v-if="!record.visualSettingsVFX">
+                    VFX intensity not customizable, may result in
+                    <span class="bold">headache</span> and
+                    <span class="bold">confusion</span>
+                </li>
+            </ul>
+
+            <h6 class="bold">Safety</h6>
+            <ul class="small-margin">
+                <li v-if="record.cameraMovementChoppy">
+                    Camera movement may look choppy, resulting in
+                    <span class="bold">dizziness</span>
+                </li>
+                <li v-if="record.cameraMovementUnpredictable">
+                    Camera may move unexpectedly or shake a lot, resulting in
+                    <span class="bold">dizziness</span>
+                </li>
+                <li v-if="!record.visualSettingsVFX">
+                    VFX intensity not customizable, may result in
+                    <span class="bold">seizures</span>
+                </li>
+                <li v-if="!record.inputSettingsAlternativeMovement">
+                    Alternative movement methods (e.g. teleportation) not
+                    supported, may result in <span class="bold">dizziness</span>
                 </li>
             </ul>
 
@@ -174,7 +220,50 @@ const chartOptions = {
         <dialog id="ears-dialog" class="left-align">
             <h5 class="bold">Comfort</h5>
 
+            <ul class="small-margin">
+                <li v-if="!record.auditorySettings">
+                    Audiotory settings not customizable, may result in
+                    <span class="bold">ear discomfort</span>
+                </li>
+                <li v-if="!record.auditorySettingsScreenReader">
+                    Audio equalizer not supported, may result in
+                    <span class="bold">ear discomfort</span> and
+                    <span class="bold">frustration</span> (e.g. some sounds are
+                    too loud others too quiet, user just can't get the volume
+                    right)
+                </li>
+            </ul>
+
             <h5 class="bold">Accessibility</h5>
+            <ul class="small-margin">
+                <li v-if="!record.visualSettingsSubtitles">
+                    Subtitles not available, may result in
+                    <span class="bold">diminished experience</span> and
+                    <span class="bold">unusability</span>
+                </li>
+                <li v-if="!record.auditorySettings">
+                    Audiotory settings not customizable, may result in
+                    <span class="bold">diminished experience</span> and
+                    <span class="bold">unusability</span>
+                </li>
+                <li v-if="!record.auditorySettingsScreenReader">
+                    Audio equalizer not supported, may result in
+                    <span class="bold">diminished experience</span>
+                </li>
+                <li v-if="!record.auditorySettingsSpatialAudio">
+                    Spatial audio not supported, may result in
+                    <span class="bold">disorientation</span>
+                </li>
+            </ul>
+
+            <h5 class="bold">Safety</h5>
+            <ul class="small-margin">
+                <li v-if="!record.auditorySettings">
+                    Audiotory settings not customizable, may result in
+                    <span class="bold">hearing loss</span>
+                </li>
+            </ul>
+
             <nav class="center-align no-space">
                 <button class="transparent link" data-ui="#ears-dialog">
                     Close
@@ -184,9 +273,46 @@ const chartOptions = {
 
         <div class="overlay blur"></div>
         <dialog id="eyes-dialog" class="left-align">
-            <h5 class="bold">Comfort</h5>
+            <h6 class="bold">Comfort</h6>
 
-            <h5 class="bold">Accessibility</h5>
+            <ul class="small-margin">
+                <li v-if="!record.visualSettingsVFX">
+                    VFX intensity not customizable, may result in
+                    <span class="bold">eye strain</span>
+                </li>
+
+                <li v-if="!record.visualSettingsColorblind">
+                    Colorblind mode not available, may result in
+                    <span class="bold">eye strain</span>
+                </li>
+            </ul>
+
+            <h6 class="bold">Accessibility</h6>
+            <ul class="small-margin">
+                <li v-if="!record.visualSettings">
+                    Visual settings not customizable, may result in
+                    <span class="bold">diminished experience</span> and
+                    <span class="bold">unusability</span>
+                </li>
+
+                <li v-if="!record.visualSettingsColorblind">
+                    Colorblind mode not available, may result in
+                    <span class="bold">diminished experience</span> and
+                    <span class="bold">unusability</span>
+                </li>
+
+                <li v-if="!record.auditorySettingsScreenReader">
+                    Screen reader not supported, may result in
+                    <span class="bold">diminished experience</span> and
+                    <span class="bold">unusability</span>
+                </li>
+
+                <li v-if="!record.auditorySettingsSpatialAudio">
+                    Spatial audio not supported, may result in
+                    <span class="bold">disorientation</span>
+                </li>
+            </ul>
+
             <nav class="center-align no-space">
                 <button class="transparent link" data-ui="#eyes-dialog">
                     Close
@@ -196,16 +322,31 @@ const chartOptions = {
 
         <div class="overlay blur"></div>
         <dialog id="stomach-dialog" class="left-align">
-            <h5 class="bold">Comfort</h5>
+            <h6 class="bold">Comfort</h6>
 
-            <ul class="margin">
+            <ul class="small-margin">
                 <li v-if="record.cameraMovementChoppy">
-                    Camera may look choppy and induce
-                    <span class="bold"> feeling of sickness </span>
+                    Camera movement may look choppy, resulting in
+                    <span class="bold">nausea</span>
+                </li>
+                <li v-if="record.cameraMovementUnpredictable">
+                    Camera may move unexpectedly or shake a lot, resulting in
+                    <span class="bold">nausea</span>
+                </li>
+                <li v-if="!record.inputSettingsAlternativeMovement">
+                    Alternative movement methods (e.g. teleportation) not
+                    supported, may result in <span class="bold">nausea</span>
                 </li>
             </ul>
 
-            <h5 class="bold">Accessibility</h5>
+            <h6 class="bold">Accessibility</h6>
+            <ul class="small-margin">
+                <li v-if="record.cameraMovementNoAlternativeMethods">
+                    Alternative camera movement methods (e.g. snap turning) not
+                    supported, may result in
+                    <span class="bold">motion sickness</span>
+                </li>
+            </ul>
             <nav class="center-align no-space">
                 <button class="transparent link" data-ui="#stomach-dialog">
                     Close
@@ -216,8 +357,36 @@ const chartOptions = {
         <div class="overlay blur"></div>
         <dialog id="arms-dialog" class="left-align">
             <h5 class="bold">Comfort</h5>
+            <ul class="margin">
+                <li v-if="!record.inputSettings">
+                    Input settings not customizable, may result in
+                    <span class="bold">reduced comfort</span>
+                </li>
+                <li v-if="!record.inputSettingsRemapping">
+                    Keybind remapping not supported, may result in
+                    <span class="bold">reduced comfort</span>
+                </li>
+            </ul>
 
             <h5 class="bold">Accessibility</h5>
+            <ul class="margin">
+                <li v-if="!record.inputSettings">
+                    Input settings not customizable, may result in
+                    <span class="bold">diminished experience</span> and
+                    <span class="bold">unusability</span>
+                </li>
+                <li v-if="!record.inputSettingsRemapping">
+                    Keybind remapping not supported, may result in
+                    <span class="bold">diminished experience</span> and
+                    <span class="bold">unusability</span>
+                </li>
+                <li v-if="!record.inputSettingsAimAssist">
+                    Aim assist not available, may result in
+                    <span class="bold">diminished experience</span> and
+                    <span class="bold">frustration</span>
+                </li>
+            </ul>
+
             <nav class="center-align no-space">
                 <button class="transparent link" data-ui="#arms-dialog">
                     Close
@@ -228,49 +397,43 @@ const chartOptions = {
         <div class="overlay blur"></div>
         <dialog id="legs-dialog" class="left-align">
             <h5 class="bold">Comfort</h5>
+            <ul class="margin">
+                <li v-if="!record.inputSettings">
+                    Input settings not customizable, may result in
+                    <span class="bold">reduced comfort</span>
+                </li>
+            </ul>
 
             <h5 class="bold">Accessibility</h5>
+            <ul class="margin">
+                <li v-if="!record.inputSettings">
+                    Input settings not customizable, may result in
+                    <span class="bold">diminished experience</span> and
+                    <span class="bold">unusability</span>
+                </li>
+                <li v-if="!record.inputSettingsAlternativeMovement">
+                    Alternative movement methods (e.g. teleportation) not
+                    supported, may result in
+                    <span class="bold">diminished experience</span> and
+                    <span class="bold">unusability</span>
+                </li>
+            </ul>
+
+            <h5 class="bold">Safety</h5>
+            <ul class="margin">
+                <li v-if="!record.inputSettingsAlternativeMovement">
+                    Alternative movement methods (e.g. teleportation) not
+                    supported, may result in
+                    <span class="bold">falling over</span> (e.g. user is trying
+                    to reach for something that is too far because his leg
+                    mobility is limited)
+                </li>
+            </ul>
             <nav class="center-align no-space">
                 <button class="transparent link" data-ui="#legs-dialog">
                     Close
                 </button>
             </nav>
         </dialog>
-
-        <!-- <div
-            v-if="isDialogEyesVisible || isDialogArmsVisible"
-            id="overlay-blur"
-            class="overlay blur active"
-        ></div>
-
-        <dialog
-            v-if="isDialogEyesVisible"
-            id="dialog-eyes"
-            class="active center middle small-width"
-        >
-            <h6 class="center-align bottom-margin">Detailed information</h6>
-            <div class="vertical-margin horizontal-margin horizontal-padding">
-                <p>Must use eyes</p>
-                <p>Color go bright, eye hurt, ouch</p>
-                <p>Must use eyes</p>
-                <p>Color go bright, eye hurt, ouch</p>
-                <p>Must use eyes</p>
-                <p>Color go bright, eye hurt, ouch</p>
-            </div>
-            <nav class="middle-align no-space">
-                <button class="transparent link" @click="closeAllDialogs()">
-                    Close
-                </button>
-            </nav>
-        </dialog>
-
-        <dialog v-if="isDialogArmsVisible" id="dialog-arms" class="active">
-            <h5>Arms</h5>
-            <div>Some text here</div>
-            <nav class="right-align no-space">
-                <button class="transparent link">Cancel</button>
-                <button class="transparent link">Confirm</button>
-            </nav>
-        </dialog> -->
     </div>
 </template>
