@@ -32,7 +32,7 @@
     width: 300px;
     height: 300px;
     position: relative;
-    animation: pop-in 0.8s;
+    animation: pop-in 1s;
 }
 
 .head {
@@ -42,9 +42,9 @@
     border-radius: 50%;
     display: block;
     position: absolute;
-    top: 28px;
+    top: 31px;
     left: 133px;
-    z-index: 1;
+    z-index: 5;
     background-color: black;
     transform-origin: center bottom;
 }
@@ -53,18 +53,113 @@
     outline: 4px solid red;
 }
 
-.head:active {
-    outline: 3px solid red;
+.leftear {
+    width: 15px;
+    height: 20px;
+    border: 6px solid black;
+    border-radius: 100%;
+    display: block;
+    position: absolute;
+    top: 45px;
+    left: 126px;
+    background-color: lightgray;
+    z-index: 4;
 }
 
-.torso {
+.leftear:focus-visible {
+    outline: 4px solid red;
+}
+
+.rightear {
+    width: 15px;
+    height: 20px;
+    border: 6px solid black;
+    border-radius: 100%;
+    display: block;
+    position: absolute;
+    top: 45px;
+    left: 180px;
+    background-color: lightgray;
+    z-index: 4;
+}
+
+.rightear:focus-visible {
+    outline: 4px solid red;
+}
+
+.lefteye {
+    width: 10px;
+    height: 10px;
+    border: 2.2px solid white;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    top: 51px;
+    left: 146px;
+    z-index: 6;
+    background-color: black;
+}
+
+.lefteye:focus-visible {
+    outline: 4px solid red;
+}
+
+.righteye {
+    width: 10px;
+    height: 10px;
+    border: 2.2px solid white;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    top: 51px;
+    left: 164px;
+    z-index: 6;
+    background-color: black;
+}
+
+.righteye:focus-visible {
+    outline: 4px solid red;
+}
+
+.mouth {
+    display: block;
+    position: absolute;
+    top: 68px;
+    left: 148px;
+    width: 20px;
+    height: 10px;
+    background-color: white;
+    border: 1px solid;
+    border-radius: 0 0 10px 10px;
+    z-index: 6;
+    pointer-events: none;
+}
+
+.neck {
     width: 12px;
-    height: 100px;
+    height: 20px;
     border: 6px solid black;
     display: block;
     position: absolute;
-    top: 56px;
+    top: 80px;
     left: 153px;
+    pointer-events: none;
+    z-index: 4;
+}
+
+.stomach {
+    width: 12px;
+    height: 56px;
+    border: 6px solid black;
+    display: block;
+    position: absolute;
+    top: 94px;
+    left: 153px;
+    z-index: 5;
+}
+
+.stomach:focus-visible {
+    outline: 4px solid red;
 }
 
 .leftleg {
@@ -77,6 +172,11 @@
     left: 154px;
     transform: rotate(20deg);
     transform-origin: top;
+    z-index: 3;
+}
+
+.leftleg:focus-visible {
+    outline: 4px solid red;
 }
 
 .rightleg {
@@ -89,6 +189,11 @@
     left: 152px;
     transform: rotate(-20deg);
     transform-origin: top;
+    z-index: 3;
+}
+
+.rightleg:focus-visible {
+    outline: 4px solid red;
 }
 
 .leftarm {
@@ -101,6 +206,11 @@
     left: 87px;
     transform-origin: 100%;
     transform: rotate(-55deg);
+    z-index: 4;
+}
+
+.leftarm:focus-visible {
+    outline: 4px solid red;
 }
 
 .rightarm {
@@ -113,6 +223,11 @@
     left: 161px;
     transform-origin: 0%;
     transform: rotate(55deg);
+    z-index: 4;
+}
+
+.rightarm:focus-visible {
+    outline: 4px solid red;
 }
 
 @keyframes wave {
@@ -143,7 +258,7 @@
 @keyframes pop-in {
     from {
         opacity: 0;
-        transform: scale(0.8);
+        transform: scale(0.7);
     } /* Start invisible and shrunk */
     to {
         opacity: 1;

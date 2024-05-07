@@ -4,69 +4,6 @@ definePageMeta({
     name: "Comfort",
 });
 
-const route = useRoute();
-const client = useSupabaseClient();
-
-const isDialogEyesVisible = ref(false);
-const isDialogArmsVisible = ref(false);
-
-let record = null;
-
-// try {
-//     const { data, error } = await client
-//         .from("applications")
-//         .select("*")
-//         .eq("id", route.params.id);
-
-//     if (error) {
-//         console.error("Error during insertion:", error);
-//     } else {
-//         console.log("Record successfully read:", data);
-//         record = data[0];
-//     }
-// } catch (error) {
-//     console.error("Error:", error);
-// }
-
-//calculateComfortRating();
-
-function toggleDialog(dialogRef) {
-    dialogRef.value = !dialogRef.value;
-}
-
-function closeAllDialogs() {
-    isDialogEyesVisible.value = false;
-    isDialogArmsVisible.value = false;
-}
-
-/*
-function calculateComfortRating() {
-    // eyes, ears, head, arms, legs
-    const rating = [4, 4, 4, 4, 4];
-
-    Object.entries(record).forEach(([key, value]) => {
-        if (
-            key === "id" ||
-            key === "applicationName" ||
-            key === "applicationIconLink"
-        ) {
-        } else if (key === "cameraMovement") {
-        } else if (key === "cameraMovementChoppy") {
-            if (value === "yes") {
-                rating[0] = rating[0] - 1;
-                rating[1] = rating[1] - 1;
-            }
-        } else if (key === "cameraMovementNoAlternativeMethods") {
-            if (value === "yes") {
-                rating[0] = rating[0] - 1;
-            }
-        } else if (key === "cameraMovementUnpredictable") {
-            rating[0] = rating[0] - 1;
-            rating[1] = rating[1] - 1;
-        }
-    });
-}*/
-
 function generateRandomData(length, min, max) {
     const data = [];
     for (let i = 0; i < length; i++) {
@@ -74,6 +11,53 @@ function generateRandomData(length, min, max) {
     }
     return data;
 }
+
+const route = useRoute();
+const client = useSupabaseClient();
+
+let record = null;
+
+try {
+    const { data, error } = await client
+        .from("applications")
+        .select("*")
+        .eq("id", route.params.id);
+
+    if (error) {
+        console.error("Error during insertion:", error);
+    } else {
+        console.log("Record successfully read:", data);
+        record = data[0];
+    }
+} catch (error) {
+    console.error("Error:", error);
+}
+
+//calculateComfortRating();
+
+const chartOptions = {
+    chart: {
+        type: "column",
+    },
+    title: {
+        text: "Comfort",
+    },
+    xAxis: {
+        categories: ["Comfort", "Accessibility", "Safety"],
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: "Rating",
+        },
+    },
+    series: [
+        {
+            name: "Rating",
+            data: [3, 2, 4],
+        },
+    ],
+};
 </script>
 
 <template>
@@ -87,25 +71,63 @@ function generateRandomData(length, min, max) {
         <article class="medium no-elevate surface">
             <div class="absolute center">
                 <div class="stickman-wrapper">
-                    <NuxtLink class="head" to="./head"></NuxtLink>
-                    <NuxtLink class="torso" to="./stomach"></NuxtLink>
                     <NuxtLink
-                        href="#"
-                        class="leftarm"
-                        data-ui="#leftarm-dialog"
+                        to="#"
+                        class="head"
+                        data-ui="#head-dialog"
                     ></NuxtLink>
-                    <div class="rightarm"></div>
-                    <div class="leftleg"></div>
                     <NuxtLink
-                        href="#"
+                        to="#"
+                        class="leftear"
+                        data-ui="#ears-dialog"
+                    ></NuxtLink>
+                    <NuxtLink
+                        to="#"
+                        class="rightear"
+                        data-ui="#ears-dialog"
+                    ></NuxtLink>
+                    <NuxtLink
+                        to="#"
+                        class="lefteye"
+                        data-ui="#eyes-dialog"
+                    ></NuxtLink>
+                    <NuxtLink
+                        to="#"
+                        class="righteye"
+                        data-ui="#eyes-dialog"
+                    ></NuxtLink>
+                    <NuxtLink to="" class="mouth"></NuxtLink>
+                    <NuxtLink to="" class="neck"></NuxtLink>
+                    <NuxtLink
+                        to="#"
+                        class="stomach"
+                        data-ui="#stomach-dialog"
+                    ></NuxtLink>
+                    <NuxtLink
+                        to="#"
+                        class="leftarm"
+                        data-ui="#arms-dialog"
+                    ></NuxtLink>
+                    <NuxtLink
+                        to="#"
+                        class="rightarm"
+                        data-ui="#arms-dialog"
+                    ></NuxtLink>
+                    <NuxtLink
+                        to="#"
+                        class="leftleg"
+                        data-ui="#legs-dialog"
+                    ></NuxtLink>
+                    <NuxtLink
+                        to="#"
                         class="rightleg"
-                        data-ui="#rightleg-dialog"
+                        data-ui="#legs-dialog"
                     ></NuxtLink>
                 </div>
             </div>
         </article>
 
-        <table class="top-margin large-margin center-align large-width center">
+        <table class="center-align large-width center">
             <tbody>
                 <tr>
                     <td class="large-text bold">Comfort</td>
@@ -120,13 +142,96 @@ function generateRandomData(length, min, max) {
             </tbody>
         </table>
 
-        <div class="overlay blur"></div>
+        <div class="top-margin large-margin">
+            <div class="circle medium-width center">
+                <highchart
+                    :modules="['accessibility']"
+                    :options="chartOptions"
+                    :more="true"
+                />
+            </div>
+        </div>
 
-        <dialog id="leftarm-dialog">
-            <h5>Custom overlay</h5>
-            <div>Some text here</div>
-            <nav class="right-align no-space">
-                <button class="transparent link" data-ui="#leftarm-dialog">
+        <div class="overlay blur"></div>
+        <dialog id="head-dialog" class="left-align">
+            <h5 class="bold">Comfort</h5>
+
+            <ul class="margin">
+                <li v-if="record.cameraMovementChoppy">
+                    Camera may look choppy and induce
+                    <span class="bold"> headaches </span>
+                </li>
+            </ul>
+
+            <nav class="center-align no-space">
+                <button class="transparent link" data-ui="#head-dialog">
+                    Close
+                </button>
+            </nav>
+        </dialog>
+
+        <div class="overlay blur"></div>
+        <dialog id="ears-dialog" class="left-align">
+            <h5 class="bold">Comfort</h5>
+
+            <h5 class="bold">Accessibility</h5>
+            <nav class="center-align no-space">
+                <button class="transparent link" data-ui="#ears-dialog">
+                    Close
+                </button>
+            </nav>
+        </dialog>
+
+        <div class="overlay blur"></div>
+        <dialog id="eyes-dialog" class="left-align">
+            <h5 class="bold">Comfort</h5>
+
+            <h5 class="bold">Accessibility</h5>
+            <nav class="center-align no-space">
+                <button class="transparent link" data-ui="#eyes-dialog">
+                    Close
+                </button>
+            </nav>
+        </dialog>
+
+        <div class="overlay blur"></div>
+        <dialog id="stomach-dialog" class="left-align">
+            <h5 class="bold">Comfort</h5>
+
+            <ul class="margin">
+                <li v-if="record.cameraMovementChoppy">
+                    Camera may look choppy and induce
+                    <span class="bold"> feeling of sickness </span>
+                </li>
+            </ul>
+
+            <h5 class="bold">Accessibility</h5>
+            <nav class="center-align no-space">
+                <button class="transparent link" data-ui="#stomach-dialog">
+                    Close
+                </button>
+            </nav>
+        </dialog>
+
+        <div class="overlay blur"></div>
+        <dialog id="arms-dialog" class="left-align">
+            <h5 class="bold">Comfort</h5>
+
+            <h5 class="bold">Accessibility</h5>
+            <nav class="center-align no-space">
+                <button class="transparent link" data-ui="#arms-dialog">
+                    Close
+                </button>
+            </nav>
+        </dialog>
+
+        <div class="overlay blur"></div>
+        <dialog id="legs-dialog" class="left-align">
+            <h5 class="bold">Comfort</h5>
+
+            <h5 class="bold">Accessibility</h5>
+            <nav class="center-align no-space">
+                <button class="transparent link" data-ui="#legs-dialog">
                     Close
                 </button>
             </nav>
