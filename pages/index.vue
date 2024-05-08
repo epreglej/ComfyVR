@@ -24,14 +24,11 @@ console.log(records);
 
 <template>
     <div v-for="record in records" :key="record.id">
-        <NuxtLink
-            class="button transparent vertical"
-            :to="record.applicationLink"
-        >
+        <a class="button transparent vertical" :href="record.applicationLink">
             <i class="extra">
                 <img class="" :src="record.applicationIconLink" />
             </i>
             <span class="large-text">{{ record.applicationName }}</span>
-        </NuxtLink>
+        </a>
     </div>
 </template>

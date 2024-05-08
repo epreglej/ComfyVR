@@ -19,7 +19,12 @@ headerTitle.value = record.applicationName;
                 <i>arrow_back</i>
             </NuxtLink>
         </template>
+
+        <i v-if="record.applicationIconLink" class="extra">
+            <img :src="record.applicationIconLink" />
+        </i>
         <h6 class="max left-align">{{ headerTitle }}</h6>
+
         <NuxtLink to="/logout" class="transparent circle large">
             <i>logout</i>
         </NuxtLink>
