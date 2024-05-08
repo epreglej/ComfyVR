@@ -12,6 +12,228 @@ function generateRandomData(length, min, max) {
     return data;
 }
 
+function calculateComfortRating(record) {
+    let comfortPointCounter = 0;
+    let totalComfortPoints = 0;
+
+    if (!record.cameraMovementChoppy) {
+        totalComfortPoints += 1;
+        comfortPointCounter += 1;
+    } else {
+        totalComfortPoints += 1;
+    }
+
+    if (!record.cameraMovementUnpredictable) {
+        totalComfortPoints += 1;
+        comfortPointCounter += 1;
+    } else {
+        totalComfortPoints += 1;
+    }
+
+    if (record.cameraMovementAlternativeMethods) {
+        totalComfortPoints += 1;
+        comfortPointCounter += 1;
+    } else {
+        totalComfortPoints += 1;
+    }
+
+    if (record.visualSettings) {
+        totalComfortPoints += 1;
+        comfortPointCounter += 1;
+    } else {
+        totalComfortPoints += 1;
+    }
+
+    if (record.visualSettingsVFX) {
+        totalComfortPoints += 1;
+        comfortPointCounter += 1;
+    } else {
+        totalComfortPoints += 1;
+    }
+
+    if (record.visualSettingsColorblind) {
+        totalComfortPoints += 1;
+        comfortPointCounter += 1;
+    } else {
+        totalComfortPoints += 1;
+    }
+
+    if (record.auditorySettings) {
+        totalComfortPoints += 1;
+        comfortPointCounter += 1;
+    } else {
+        totalComfortPoints += 1;
+    }
+
+    if (record.auditorySettingsEqualizer) {
+        totalComfortPoints += 1;
+        comfortPointCounter += 1;
+    } else {
+        totalComfortPoints += 1;
+    }
+
+    if (record.inputSettings) {
+        totalComfortPoints += 1;
+        comfortPointCounter += 1;
+    } else {
+        totalComfortPoints += 1;
+    }
+
+    if (record.inputSettingsAlternativeMovement) {
+        totalComfortPoints += 1;
+        comfortPointCounter += 1;
+    } else {
+        totalComfortPoints += 1;
+    }
+
+    if (record.inputSettingsRemapping) {
+        totalComfortPoints += 1;
+        comfortPointCounter += 1;
+    } else {
+        totalComfortPoints += 1;
+    }
+
+    return ((comfortPointCounter / totalComfortPoints) * 100).toFixed() + "%";
+}
+
+function calculateAccessibilityRating(record) {
+    let accessibilityPointCounter = 0;
+    let totalAccessibilityPoints = 0;
+
+    if (record.cameraMovementAlternativeMethods) {
+        totalAccessibilityPoints += 1;
+        accessibilityPointCounter += 1;
+    } else {
+        totalAccessibilityPoints += 1;
+    }
+
+    if (record.visualSettings) {
+        totalAccessibilityPoints += 1;
+        accessibilityPointCounter += 1;
+    } else {
+        totalAccessibilityPoints += 1;
+    }
+
+    if (record.visualSettingsSubtitles) {
+        totalAccessibilityPoints += 1;
+        accessibilityPointCounter += 1;
+    } else {
+        totalAccessibilityPoints += 1;
+    }
+
+    if (record.visualSettingsVFX) {
+        totalAccessibilityPoints += 1;
+        accessibilityPointCounter += 1;
+    } else {
+        totalAccessibilityPoints += 1;
+    }
+
+    if (record.visualSettingsColorblind) {
+        totalAccessibilityPoints += 1;
+        accessibilityPointCounter += 1;
+    } else {
+        totalAccessibilityPoints += 1;
+    }
+
+    if (record.auditorySettings) {
+        totalAccessibilityPoints += 1;
+        accessibilityPointCounter += 1;
+    } else {
+        totalAccessibilityPoints += 1;
+    }
+
+    if (record.auditorySettingsScreenReader) {
+        totalAccessibilityPoints += 1;
+        accessibilityPointCounter += 1;
+    } else {
+        totalAccessibilityPoints += 1;
+    }
+
+    if (record.auditorySettingsSpatialAudio) {
+        totalAccessibilityPoints += 1;
+        accessibilityPointCounter += 1;
+    } else {
+        totalAccessibilityPoints += 1;
+    }
+
+    if (record.inputSettings) {
+        totalAccessibilityPoints += 1;
+        accessibilityPointCounter += 1;
+    } else {
+        totalAccessibilityPoints += 1;
+    }
+
+    if (record.inputSettingsAlternativeMovement) {
+        totalAccessibilityPoints += 1;
+        accessibilityPointCounter += 1;
+    } else {
+        totalAccessibilityPoints += 1;
+    }
+
+    if (record.inputSettingsRemapping) {
+        totalAccessibilityPoints += 1;
+        accessibilityPointCounter += 1;
+    } else {
+        totalAccessibilityPoints += 1;
+    }
+
+    if (record.inputSettingsAimAssist) {
+        totalAccessibilityPoints += 1;
+        accessibilityPointCounter += 1;
+    } else {
+        totalAccessibilityPoints += 1;
+    }
+
+    return (
+        (
+            (accessibilityPointCounter / totalAccessibilityPoints) *
+            100
+        ).toFixed() + "%"
+    );
+}
+
+function calculateSafetyRating(record) {
+    let safetyPointCounter = 0;
+    let totalSafetyPoints = 0;
+
+    if (!record.cameraMovementChoppy) {
+        totalSafetyPoints += 1;
+        safetyPointCounter += 1;
+    } else {
+        totalSafetyPoints += 1;
+    }
+
+    if (!record.cameraMovementUnpredictable) {
+        totalSafetyPoints += 1;
+        safetyPointCounter += 1;
+    } else {
+        totalSafetyPoints += 1;
+    }
+
+    if (record.visualSettingsVFX) {
+        totalSafetyPoints += 1;
+        safetyPointCounter += 1;
+    } else {
+        totalSafetyPoints += 1;
+    }
+
+    if (record.auditorySettings) {
+        totalSafetyPoints += 1;
+        safetyPointCounter += 1;
+    } else {
+        totalSafetyPoints += 1;
+    }
+
+    if (record.inputSettingsAlternativeMovement) {
+        totalSafetyPoints += 1;
+        safetyPointCounter += 1;
+    } else {
+        totalSafetyPoints += 1;
+    }
+
+    return ((safetyPointCounter / totalSafetyPoints) * 100).toFixed() + "%";
+}
+
 const route = useRoute();
 const client = useSupabaseClient();
 
@@ -33,40 +255,17 @@ try {
     console.error("Error:", error);
 }
 
-//calculateComfortRating();
-
-const chartOptions = {
-    chart: {
-        type: "column",
-    },
-    title: {
-        text: "Comfort",
-    },
-    xAxis: {
-        categories: ["Comfort", "Accessibility", "Safety"],
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: "Rating",
-        },
-    },
-    series: [
-        {
-            name: "Rating",
-            data: [3, 2, 4],
-        },
-    ],
-};
+let comfortRatingPercentage = calculateComfortRating(record);
+let accessibilityRatingPercentage = calculateAccessibilityRating(record);
+let safetyRatingPercentage = calculateSafetyRating(record);
 </script>
 
 <template>
     <div class="main responsive right page active center-align">
-        <!-- <i class="extra">
+        <i class="extra">
             <img class="" :src="record.applicationIconLink" />
         </i>
-        <span class="large-text">{{ record.applicationName }}</span> -->
-        <span>Minecraft</span>
+        <span class="large-text">{{ record.applicationName }}</span>
 
         <article class="medium no-elevate surface">
             <div class="absolute center">
@@ -131,22 +330,12 @@ const chartOptions = {
                     <td class="large-text bold">Safety</td>
                 </tr>
                 <tr>
-                    <td>3</td>
-                    <td>2</td>
-                    <td>4</td>
+                    <td>{{ comfortRatingPercentage }}</td>
+                    <td>{{ accessibilityRatingPercentage }}</td>
+                    <td>{{ safetyRatingPercentage }}</td>
                 </tr>
             </tbody>
         </table>
-
-        <div class="top-margin large-margin">
-            <div class="circle medium-width center">
-                <highchart
-                    :modules="['accessibility']"
-                    :options="chartOptions"
-                    :more="true"
-                />
-            </div>
-        </div>
 
         <div class="overlay blur"></div>
         <dialog id="head-dialog" class="left-align">
@@ -161,6 +350,12 @@ const chartOptions = {
                     <span class="bold">headache</span> and
                     <span class="bold"> disorientation</span>
                 </li>
+                <li v-if="!record.cameraMovementAlternativeMethods">
+                    Alternative camera movement methods (e.g. snap turning) not
+                    supported, may result in
+                    <span class="bold">discomfort</span> and
+                    <span class="bold"> headache</span>
+                </li>
                 <li v-if="!record.inputSettingsAlternativeMovement">
                     Alternative movement methods (e.g. teleportation) not
                     supported, may result in <span class="bold">headache</span>
@@ -170,10 +365,11 @@ const chartOptions = {
             <h6 class="bold">Accessibility</h6>
             <ul class="small-margin">
                 <li v-if="!record.cameraMovementAlternativeMethods">
-                    Alternative camera movement methods (e.g. snap turning) not
-                    supported, may result in
-                    <span class="bold">headache</span> and
-                    <span class="bold"> disorientation</span>
+                    Alternative camera movement methods (e.g. voice commands)
+                    not supported, may result in
+                    <span class="bold">straining</span>,
+                    <span class="bold">disorientation</span> and
+                    <span class="bold">difficulty</span> when interacting
                 </li>
 
                 <li v-if="!record.visualSettingsSubtitles">
@@ -225,7 +421,7 @@ const chartOptions = {
                     Audiotory settings not customizable, may result in
                     <span class="bold">ear discomfort</span>
                 </li>
-                <li v-if="!record.auditorySettingsScreenReader">
+                <li v-if="!record.auditorySettingsEqualizer">
                     Audio equalizer not supported, may result in
                     <span class="bold">ear discomfort</span> and
                     <span class="bold">frustration</span> (e.g. some sounds are
@@ -341,7 +537,7 @@ const chartOptions = {
 
             <h6 class="bold">Accessibility</h6>
             <ul class="small-margin">
-                <li v-if="record.cameraMovementNoAlternativeMethods">
+                <li v-if="!record.cameraMovementAlternativeMethods">
                     Alternative camera movement methods (e.g. snap turning) not
                     supported, may result in
                     <span class="bold">motion sickness</span>
