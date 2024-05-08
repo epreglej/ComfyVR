@@ -9,7 +9,7 @@ try {
     if (error) {
         console.error("Error during insertion:", error);
     } else {
-        console.log("Record successfully read:", data);
+        //console.log("Record successfully read:", data);
         records = data;
     }
 } catch (error) {
@@ -17,8 +17,9 @@ try {
 }
 
 for (let record of records) {
-    record.applicationLink = "./ratings/" + record.id + "/comfort";
+    record.applicationLink = "./ratings/" + record.id;
 }
+console.log(records);
 </script>
 
 <template>

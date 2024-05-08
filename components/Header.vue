@@ -1,17 +1,13 @@
-<script>
-export default {
-    computed: {
-        currentPageName() {
-            return this.$route.name;
-        },
-    },
-};
+<script setup>
+let record = inject("record");
+const headerTitle = ref();
+headerTitle.value = record.applicationName;
 </script>
 
 <template>
     <nav>
-        <template v-if="currentPageName === 'Dashboard'">
-            <NuxtLink class="transparent circle large s">
+        <template v-if="headerTitle === 'Dashboard'">
+            <NuxtLink class="transparent circle large">
                 <i>home</i>
             </NuxtLink>
         </template>
@@ -23,7 +19,7 @@ export default {
                 <i>arrow_back</i>
             </NuxtLink>
         </template>
-        <h6 class="max left-align">{{ currentPageName }}</h6>
+        <h6 class="max left-align">{{ headerTitle }}</h6>
         <NuxtLink to="/logout" class="transparent circle large">
             <i>logout</i>
         </NuxtLink>

@@ -1,16 +1,10 @@
 <script setup>
+import "vue3-circle-progress/dist/circle-progress.css";
+import CircleProgress from "vue3-circle-progress";
+
 definePageMeta({
     layout: "ratings-layout",
-    name: "Comfort",
 });
-
-function generateRandomData(length, min, max) {
-    const data = [];
-    for (let i = 0; i < length; i++) {
-        data.push(Math.floor(Math.random() * (max - min + 1)) + min);
-    }
-    return data;
-}
 
 function calculateComfortRating(record) {
     let comfortPointCounter = 0;
@@ -231,43 +225,25 @@ function calculateSafetyRating(record) {
         totalSafetyPoints += 1;
     }
 
-    return ((safetyPointCounter / totalSafetyPoints) * 100).toFixed() + "%";
+    return ((safetyPointCounter / totalSafetyPoints) * 100).toFixed();
 }
 
-const route = useRoute();
-const client = useSupabaseClient();
+const comfortRatingPercentage = ref(0);
+const accessibilityRatingPercentage = ref(0);
+const safetyRatingPercentage = ref(0);
 
-let record = null;
+let record = inject("record");
 
-try {
-    const { data, error } = await client
-        .from("applications")
-        .select("*")
-        .eq("id", route.params.id);
-
-    if (error) {
-        console.error("Error during insertion:", error);
-    } else {
-        console.log("Record successfully read:", data);
-        record = data[0];
-    }
-} catch (error) {
-    console.error("Error:", error);
-}
-
-let comfortRatingPercentage = calculateComfortRating(record);
-let accessibilityRatingPercentage = calculateAccessibilityRating(record);
-let safetyRatingPercentage = calculateSafetyRating(record);
+comfortRatingPercentage.value = parseInt(calculateComfortRating(record));
+accessibilityRatingPercentage.value = parseInt(
+    calculateAccessibilityRating(record),
+);
+safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
 </script>
 
 <template>
     <div class="main responsive right page active center-align">
-        <i class="extra">
-            <img class="" :src="record.applicationIconLink" />
-        </i>
-        <span class="large-text">{{ record.applicationName }}</span>
-
-        <article class="medium no-elevate surface">
+        <article class="medium top-margin no-elevate surface">
             <div class="absolute center">
                 <div class="stickman-wrapper">
                     <a href="#" class="head" data-ui="#head-dialog"></a>
@@ -324,15 +300,72 @@ let safetyRatingPercentage = calculateSafetyRating(record);
 
         <table class="center-align large-width center">
             <tbody>
+                <tr class="horizontal-padding">
+                    <td class="large-text">
+                        <CircleProgress
+                            class="center"
+                            :size="90"
+                            :percent="comfortRatingPercentage"
+                            :viewport="false"
+                            :fill-color="
+                                comfortRatingPercentage < 35
+                                    ? '#F44336'
+                                    : comfortRatingPercentage < 50
+                                      ? '#FFA500'
+                                      : comfortRatingPercentage < 65
+                                        ? '#FFD700'
+                                        : comfortRatingPercentage < 80
+                                          ? '#FFEB3B'
+                                          : '#4CAF50'
+                            "
+                            :show-percent="true"
+                        />
+                    </td>
+                    <td class="large-text">
+                        <CircleProgress
+                            class="center"
+                            :size="90"
+                            :percent="accessibilityRatingPercentage"
+                            :viewport="false"
+                            :fill-color="
+                                accessibilityRatingPercentage < 35
+                                    ? '#F44336'
+                                    : accessibilityRatingPercentage < 50
+                                      ? '#FFA500'
+                                      : accessibilityRatingPercentage < 65
+                                        ? '#FFD700'
+                                        : accessibilityRatingPercentage < 80
+                                          ? '#FFEB3B'
+                                          : '#4CAF50'
+                            "
+                            :show-percent="true"
+                        />
+                    </td>
+                    <td class="large-text">
+                        <CircleProgress
+                            class="center"
+                            :size="90"
+                            :percent="safetyRatingPercentage"
+                            :viewport="false"
+                            :fill-color="
+                                safetyRatingPercentage < 35
+                                    ? '#F44336'
+                                    : safetyRatingPercentage < 50
+                                      ? '#FFA500'
+                                      : safetyRatingPercentage < 65
+                                        ? '#FFD700'
+                                        : safetyRatingPercentage < 80
+                                          ? '#FFEB3B'
+                                          : '#4CAF50'
+                            "
+                            :show-percent="true"
+                        />
+                    </td>
+                </tr>
                 <tr>
                     <td class="large-text bold">Comfort</td>
                     <td class="large-text bold">Accessibility</td>
                     <td class="large-text bold">Safety</td>
-                </tr>
-                <tr>
-                    <td>{{ comfortRatingPercentage }}</td>
-                    <td>{{ accessibilityRatingPercentage }}</td>
-                    <td>{{ safetyRatingPercentage }}</td>
                 </tr>
             </tbody>
         </table>

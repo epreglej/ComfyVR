@@ -1,4 +1,7 @@
-<script setup></script>
+<script setup>
+let record = { applicationName: "Dashboard" };
+provide("record", record);
+</script>
 
 <template>
     <body class="">
