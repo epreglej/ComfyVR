@@ -1,0 +1,1 @@
+import{_ as a}from"./B08DEeq0.js";import{c as s,a as r,b as t,b5 as c,z as n,o as _}from"./DYwu2xH9.js";import"./CG4lsBUW.js";const d={class:""},p={class:"responsive"},h={__name:"dashboard-layout",setup(l){return n("record",{applicationName:"Dashboard"}),(e,i)=>{const o=a;return _(),s("body",d,[r("main",p,[t(o),c(e.$slots,"default")])])}}};export{h as default};
