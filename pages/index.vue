@@ -38,7 +38,7 @@ watch(searchQuery, (newSearchQuery) => {
 </script>
 
 <template>
-    <div class="main responsive page active center-align">
+    <div class="center-align">
         <article
             class="top-margin medium-elevate medium-width center center-align middle-align surface"
         >
@@ -54,6 +54,7 @@ watch(searchQuery, (newSearchQuery) => {
                 <i class="front">search</i>
                 <input
                     v-model="searchQuery"
+                    class="primary-hover"
                     type="text"
                     placeholder="Search..."
                 />
@@ -101,7 +102,7 @@ watch(searchQuery, (newSearchQuery) => {
         </article>
 
         <div class="center top-margin">
-            <a href="./login" class="small-text primary-text"
+            <a href="./login" class="small-text primary-text primary-hover"
                 >administrator login</a
             >
         </div>

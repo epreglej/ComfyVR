@@ -4,9 +4,7 @@
 </script>
 
 <template>
-    <body class="">
-        <main class="responsive">
-            <slot />
-        </main>
-    </body>
+    <main>
+        <slot />
+    </main>
 </template>

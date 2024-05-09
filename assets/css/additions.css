@@ -6,8 +6,14 @@
     font-style: normal;
 }
 
+.primary-hover:focus-visible {
+    background-color: var(--surface-dim);
+    outline: 2px solid var(--primary);
+}
+
 .primary-hover:hover {
     background-color: var(--surface-dim);
+    outline: 2px solid var(--primary);
 }
 
 .extra-text {
@@ -29,12 +35,24 @@
     block-size: 6rem !important;
 }
 
+.very-small-height {
+    block-size: 10rem !important;
+}
+
+.full-height {
+    height: 100% !important;
+}
+
 .full-width {
     width: 100% !important;
 }
 
 .screen-width {
     width: 100vw;
+}
+
+.extra-margin {
+    top-margin: 20rem !important;
 }
 
 .highcharts-data-label span {
@@ -52,7 +70,7 @@
     width: 300px;
     height: 300px;
     position: relative;
-    //animation: pop-in 1s;
+    animation: pop-in 1s;
     z-index: 1;
 }
 
@@ -300,12 +318,13 @@
 @keyframes pop-in {
     from {
         opacity: 0;
-        transform: scale(0.7);
+        transform: scale(0.1);
     } /* Start invisible and shrunk */
     to {
         opacity: 1;
         transform: scale(1);
-    } /* Animate to full opacity and scale */
+    }
+    /* Animate to full opacity and scale */
 }
 
 .current-counter {

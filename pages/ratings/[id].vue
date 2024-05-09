@@ -242,10 +242,10 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
 </script>
 
 <template>
-    <div class="main responsive page active center-align">
-        <article class="medium top-margin no-elevate surface">
-            <div class="absolute center">
-                <div class="stickman-wrapper">
+    <div class="top-margin center-align">
+        <article class="top-margin no-elevate surface">
+            <div class="top-margin absolute center">
+                <div class="top-margin stickman-wrapper">
                     <a href="#" class="head" data-ui="#head-dialog"></a>
                     <NuxtLink
                         to="#"
@@ -297,14 +297,15 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
                 </div>
             </div>
         </article>
-
-        <table class="center-align large-width center">
+    </div>
+    <nav class="bottom very-small-height horizontal-padding transparent">
+        <table class="large-width center-align">
             <tbody>
                 <tr class="horizontal-padding">
                     <td class="large-text">
                         <CircleProgress
                             class="center"
-                            :size="90"
+                            :size="85"
                             :percent="comfortRatingPercentage"
                             :viewport="false"
                             :fill-color="
@@ -324,7 +325,7 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
                     <td class="large-text">
                         <CircleProgress
                             class="center"
-                            :size="90"
+                            :size="85"
                             :percent="accessibilityRatingPercentage"
                             :viewport="false"
                             :fill-color="
@@ -344,7 +345,7 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
                     <td class="large-text">
                         <CircleProgress
                             class="center"
-                            :size="90"
+                            :size="85"
                             :percent="safetyRatingPercentage"
                             :viewport="false"
                             :fill-color="
@@ -369,7 +370,8 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
                 </tr>
             </tbody>
         </table>
-
+    </nav>
+    <div>
         <div class="overlay blur"></div>
         <dialog id="head-dialog" class="left-align">
             <h6 class="bold">Comfort</h6>

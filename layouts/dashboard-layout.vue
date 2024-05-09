@@ -4,10 +4,8 @@ provide("record", record);
 </script>
 
 <template>
-    <body class="">
-        <main class="responsive">
-            <Header />
-            <slot />
-        </main>
-    </body>
+    <main>
+        <Header />
+        <slot />
+    </main>
 </template>
