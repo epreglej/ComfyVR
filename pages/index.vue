@@ -33,7 +33,6 @@ for (let record of records) {
 // Watch for changes in searchQuery and update filteredRecords
 watch(searchQuery, (newSearchQuery) => {
     filteredRecords.value = search(newSearchQuery);
-    console.log(filteredRecords.value);
 });
 </script>
 
@@ -45,9 +44,7 @@ watch(searchQuery, (newSearchQuery) => {
             <h1 class="freeman-regular">comfy.vr</h1>
         </article>
 
-        <article
-            class="medium top-margin medium-elevate medium-width center surface"
-        >
+        <article class="top-margin medium-elevate medium-width center surface">
             <div
                 class="field large prefix round fill small-elevate vertical-margin medium-margin"
             >
@@ -75,7 +72,7 @@ watch(searchQuery, (newSearchQuery) => {
                     <i class="extra">
                         <img class="" :src="record.applicationIconLink" />
                     </i>
-                    <span class="large-text left-margin small-margin">{{
+                    <span class="extra-text left-margin small-margin">{{
                         record.applicationName
                     }}</span>
                 </a>
@@ -94,7 +91,7 @@ watch(searchQuery, (newSearchQuery) => {
                     <i class="extra">
                         <img class="" :src="record.applicationIconLink" />
                     </i>
-                    <span class="large-text left-margin small-margin">{{
+                    <span class="extra-text left-margin small-margin">{{
                         record.applicationName
                     }}</span>
                 </a>

@@ -11,10 +11,10 @@
                 <i>restore_page</i>
                 <span>Update</span>
             </NuxtLink>
-            <button class="transparent vertical" data-ui="#delete">
+            <NuxtLink class="button transparent vertical" to="./delete">
                 <i>delete</i>
                 <span>Delete</span>
-            </button>
+            </NuxtLink>
         </nav>
     </footer>
 </template>

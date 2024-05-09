@@ -198,8 +198,6 @@ watch(inputSettings, (newValue) => {
 });
 
 const onSubmit = handleSubmit(async (values) => {
-    alert(JSON.stringify(values, null, 2));
-
     try {
         const { data, error } = await client.from("applications").insert({
             applicationName: values.applicationName,
@@ -225,7 +223,8 @@ const onSubmit = handleSubmit(async (values) => {
         if (error) {
             console.error("Error during insert:", error);
         } else {
-            console.log("Record inserted successfully:", data);
+          alert("New application added!");
+          await navigateTo("/");
         }
     } catch (error) {
         console.error("Error:", error);
