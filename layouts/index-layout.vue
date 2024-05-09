@@ -1,9 +1,11 @@
-<script setup></script>
+<script setup>
+// let record = { applicationName: "Home" };
+// provide("record", record);
+</script>
 
 <template>
     <body class="">
         <main class="responsive">
-            <Header />
             <slot />
         </main>
     </body>

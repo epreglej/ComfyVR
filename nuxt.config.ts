@@ -31,7 +31,7 @@ export default defineNuxtConfig({
       ],
     },
   },
-  css: ["~/assets/css/additions.css"],
+  css: ["~/assets/css/additions.css", "~/assets/css/theme.css"],
   modules: ["@nuxtjs/supabase", "nuxt-highcharts"],
 
   supabase: {

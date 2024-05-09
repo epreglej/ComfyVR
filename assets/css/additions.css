@@ -1,13 +1,13 @@
+@import "./theme.css";
+
 .freeman-regular {
     font-family: "Freeman", sans-serif;
     font-weight: 400;
     font-style: normal;
 }
 
-.current-counter {
-    &::after {
-        content: "%";
-    }
+.primary-hover:hover {
+    background-color: var(--surface-dim);
 }
 
 .extra-text {
@@ -23,6 +23,14 @@
     justify-content: center;
     border-radius: 50%;
     color: black;
+}
+
+.tiny-height {
+    block-size: 6rem !important;
+}
+
+.full-width {
+    width: 100% !important;
 }
 
 .screen-width {
@@ -298,4 +306,10 @@
         opacity: 1;
         transform: scale(1);
     } /* Animate to full opacity and scale */
+}
+
+.current-counter {
+    &::after {
+        content: "%";
+    }
 }
