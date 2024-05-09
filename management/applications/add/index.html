@@ -1,0 +1,104 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/beercss@3.5.1/dist/cdn/beer.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Freeman&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap">
+<script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.5.1/dist/cdn/beer.min.js"></script>
+<link rel="preload" as="fetch" crossorigin="anonymous" href="/management/applications/add/_payload.json">
+<style>:root,body.light{--primary:#0061a4;--on-primary:#fff;--primary-container:#d1e4ff;--on-primary-container:#001d36;--secondary:#535f70;--on-secondary:#fff;--secondary-container:#d7e3f7;--on-secondary-container:#101c2b;--tertiary:#6b5778;--on-tertiary:#fff;--tertiary-container:#f2daff;--on-tertiary-container:#251431;--error:#ba1a1a;--on-error:#fff;--error-container:#ffdad6;--on-error-container:#410002;--background:#fdfcff;--on-background:#1a1c1e;--surface:#faf9fc;--on-surface:#1a1c1e;--surface-variant:#dfe2eb;--on-surface-variant:#43474e;--outline:#73777f;--outline-variant:#c3c7cf;--shadow:#000;--scrim:#000;--inverse-surface:#2f3033;--inverse-on-surface:#f1f0f4;--inverse-primary:#9ecaff;--surface-dim:#dadadd;--surface-bright:#faf9fc;--surface-container-lowest:#fff;--surface-container-low:#f4f3f7;--surface-container:#eeedf1;--surface-container-high:#e8e8eb;--surface-container-highest:#e2e2e6;--overlay:rgba(0,0,0,.5);--active:rgba(0,0,0,.1);--elevate1:0 0.125rem 0.125rem 0 rgba(0,0,0,.32);--elevate2:0 0.25rem 0.5rem 0 rgba(0,0,0,.4);--elevate3:0 0.375rem 0.75rem 0 rgba(0,0,0,.48)}.freeman-regular{font-family:Freeman,sans-serif;font-style:normal;font-weight:400}.primary-hover:hover{background-color:var(--surface-dim)}.extra-text{font-size:1.5rem}.large-icon{align-items:center;border-radius:50%;color:#000;display:flex;font-size:32px;height:32px;justify-content:center;width:32px}.tiny-height{block-size:6rem!important}.full-width{width:100%!important}.screen-width{width:100vw}.highcharts-data-label span{align-items:center;background-color:#000;border-radius:50%;color:#fff;display:flex;height:22px;justify-content:center;width:22px}.stickman-wrapper{animation:pop-in 1s;height:300px;position:relative;width:300px;z-index:1}.head{background-color:#000;border:5px solid #000;border-radius:50%;display:block;height:58px;left:133px;position:absolute;top:31px;transform-origin:center bottom;width:55px;z-index:5}.head:focus-visible{outline:4px solid red}.head:hover{outline:4px solid red}.leftear{background-color:#d3d3d3;border:6px solid #000;border-radius:100%;display:block;height:20px;left:126px;position:absolute;top:45px;width:15px;z-index:4}.leftear:focus-visible{outline:4px solid red}.leftear:hover{outline:4px solid red}.rightear{background-color:#d3d3d3;border:6px solid #000;border-radius:100%;display:block;height:20px;left:180px;position:absolute;top:45px;width:15px;z-index:4}.rightear:focus-visible{outline:4px solid red}.rightear:hover{outline:4px solid red}.lefteye{background-color:#000;border:2.2px solid #fff;border-radius:50%;display:block;height:10px;left:146px;position:absolute;top:51px;width:10px;z-index:6}.lefteye:focus-visible{outline:4px solid red}.lefteye:hover{outline:4px solid red}.righteye{background-color:#000;border:2.2px solid #fff;border-radius:50%;display:block;height:10px;left:164px;position:absolute;top:51px;width:10px;z-index:6}.righteye:focus-visible{outline:4px solid red}.righteye:hover{outline:4px solid red}.mouth{background-color:#fff;border:1px solid;border-radius:0 0 10px 10px;display:block;height:10px;left:148px;pointer-events:none;position:absolute;top:68px;width:20px;z-index:6}.neck{height:20px;pointer-events:none;top:80px;z-index:4}.neck,.stomach{background-color:#000;border:6px solid #000;display:block;left:153px;position:absolute;width:12px}.stomach{height:56px;top:94px;z-index:5}.stomach:focus-visible{outline:4px solid red}.stomach:hover{outline:4px solid red}.leftleg{background-color:#000;border:6px solid #000;display:block;height:100px;left:154px;position:absolute;top:144px;transform:rotate(20deg);transform-origin:top;width:12px;z-index:3}.leftleg:focus-visible{outline:4px solid red}.leftleg:hover{outline:4px solid red}.rightleg{background-color:#000;border:6px solid #000;display:block;height:100px;left:152px;position:absolute;top:144px;transform:rotate(-20deg);transform-origin:top;width:12px;z-index:3}.rightleg:focus-visible{outline:4px solid red}.rightleg:hover{outline:4px solid red}.leftarm{background-color:#000;border:6px solid #000;display:block;height:6px;left:87px;position:absolute;top:86px;transform:rotate(-55deg);transform-origin:100%;width:70px;z-index:4}.leftarm:focus-visible{outline:4px solid red}.leftarm:hover{outline:4px solid red}.rightarm{background-color:#000;border:6px solid #000;display:block;height:6px;left:161px;position:absolute;top:86px;transform:rotate(55deg);transform-origin:0;width:70px;z-index:4}.rightarm:focus-visible{outline:4px solid red}.rightarm:hover{outline:4px solid red}@keyframes pop-in{0%{opacity:0;transform:scale(.7)}to{opacity:1;transform:scale(1)}}.current-counter{&:after{content:"%"}}</style>
+<style>:root,body.light{--primary:#0061a4;--on-primary:#fff;--primary-container:#d1e4ff;--on-primary-container:#001d36;--secondary:#535f70;--on-secondary:#fff;--secondary-container:#d7e3f7;--on-secondary-container:#101c2b;--tertiary:#6b5778;--on-tertiary:#fff;--tertiary-container:#f2daff;--on-tertiary-container:#251431;--error:#ba1a1a;--on-error:#fff;--error-container:#ffdad6;--on-error-container:#410002;--background:#fdfcff;--on-background:#1a1c1e;--surface:#faf9fc;--on-surface:#1a1c1e;--surface-variant:#dfe2eb;--on-surface-variant:#43474e;--outline:#73777f;--outline-variant:#c3c7cf;--shadow:#000;--scrim:#000;--inverse-surface:#2f3033;--inverse-on-surface:#f1f0f4;--inverse-primary:#9ecaff;--surface-dim:#dadadd;--surface-bright:#faf9fc;--surface-container-lowest:#fff;--surface-container-low:#f4f3f7;--surface-container:#eeedf1;--surface-container-high:#e8e8eb;--surface-container-highest:#e2e2e6;--overlay:rgba(0,0,0,.5);--active:rgba(0,0,0,.1);--elevate1:0 0.125rem 0.125rem 0 rgba(0,0,0,.32);--elevate2:0 0.25rem 0.5rem 0 rgba(0,0,0,.4);--elevate3:0 0.375rem 0.75rem 0 rgba(0,0,0,.48)}</style>
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/CWpgrr2u.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/CLrdAWTm.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/C8aesE3E.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/brmOpX7l.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/DlAUqK2U.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/BLeT2nE9.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BYBRgaZQ.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DEb7K2j_.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CI3jo-TJ.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/Cxjs1nj6.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/B376PtC_.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/Dt0QuG9b.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/vR-y5Xn_.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/rzzKKEXd.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CcgyCJel.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CdKsfcHE.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CG-dQ7Mb.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BToxMry2.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/kGPo8p9T.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/6KXOOwNV.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BAINxAZu.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BsM0PlZO.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DZt5rDb5.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CeUMAk6h.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/nDx51Z0a.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CT54-xay.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BunXQ-AF.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/D2VtZQAV.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/COY3FD2A.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/Tb7WHZ7Z.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DHGmG92Y.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DXJQUqzU.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CMgnIC9a.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BJw7EJ77.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/B0HQMivg.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/rsLZwRMk.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/Cjz942Z7.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/x35EWqpG.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BFprZMYD.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/RUVO-j12.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/D6Qkfj6K.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/xHZ1Icm2.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BIIqaIWE.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/D4CQ7QL6.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BRJNW5u8.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/B7jqCVj5.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CVAT4s6q.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/B2vap4Dm.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DyWqbRcv.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/D24SLOrQ.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/B3-zj8CS.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DJ81nIOW.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/Tp0yFrXs.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/c_ux7z2G.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CEasY6AJ.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CD-gOTN4.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DoLqSbJp.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BvVM8t9f.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CaKTtT-1.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CuMl0jds.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BnPLTjKL.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BsJ-NyGe.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/txHZL_PQ.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DmPVPdlM.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/7tTPN18X.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BRy1rmrY.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CEHM5KdT.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/j8nZllKh.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DNZVNZ6u.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CCqhM9JR.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BCcCWy8w.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CslFlr-o.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BFZCP6xX.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DPiO1OoV.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BQxrSban.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/Dk_hTE3C.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CfqkYZ4q.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/C98bcGRN.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/5OCGEGTH.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/C518ft-d.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DelXD3ge.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/2U3-4SSm.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DwvjZTlL.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DyrsCXnv.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CROToSxl.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DBM4ap2X.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/B9F4TJQm.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CzhK5Hp0.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/5dOQOdJp.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BRupTues.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/93cUInyC.js">
+<script type="module" src="/_nuxt/CWpgrr2u.js" crossorigin></script></head><body><div id="__nuxt"><main class="responsive"><nav><a href="/dashboard" class="transparent circle large no-margin"><i>arrow_back</i></a><!----><h6 class="max left-align">Edit database</h6><a href="/logout" class="transparent circle large"><i>logout</i></a></nav><!--[--><div class="page right responsive active"><div class="horizontal-margin"><div class="space"></div><article class="round"><div class="horizontal-margin"><form class="vertical"><p class="top-margin center-align"><h6 class="center-align">Form</h6></p><div class="top-margin large-margin"><div class="field label border round no-margin"><input type="text" aria-invalid="true" aria-describedby="addressError"><label>Application&#39;s name</label><!----></div></div><div class="horizontal-margin top-margin vertical"><span class="large-text"> Application contains camera movement. </span><label class="radio"><input type="radio" name="cameraMovement" value="true"><span>Yes</span></label><label class="radio"><input type="radio" name="cameraMovement" value="false" checked><span>No</span></label></div><!----><!----><!----><div class="horizontal-margin top-margin vertical"><span class="large-text"> Application supports input related customization. </span><label class="radio"><input type="radio" name="inputSettings" value="true"><span>Yes</span></label><label class="radio"><input type="radio" name="inputSettings" value="false" checked><span>No</span></label></div><!----><!----><!----><div class="horizontal-margin top-margin vertical"><span class="large-text"> Application supports personalization of visual settings. </span><label class="radio"><input type="radio" name="visualSettings" value="true"><span>Yes</span></label><label class="radio"><input type="radio" name="visualSettings" value="false" checked><span>No</span></label></div><!----><!----><!----><div class="horizontal-margin top-margin vertical"><span class="large-text"> Application supports personalization of auditory settings. </span><label class="radio"><input type="radio" name="auditorySettings" value="true"><span>Yes</span></label><label class="radio"><input type="radio" name="auditorySettings" value="false" checked><span>No</span></label></div><!----><!----><!----><div class="top-margin large-margin"><div class="field label border round no-margin"><input type="text" aria-invalid="true" aria-describedby="addressError"><label>Application&#39;s icon link</label><!----></div></div><div class="top-margin large-margin center-align"><button type="submit">Submit</button></div></form></div></article></div></div><!--]--><!--[--><div class="space"></div><div class="space"></div><footer class="transparent"><nav class="bottom"><a aria-current="page" href="/management/applications/add" class="router-link-active router-link-exact-active button transparent vertical"><i>add_circle</i><span>Add</span></a><a href="/management/applications/update" class="button transparent vertical"><i>restore_page</i><span>Update</span></a><button class="transparent vertical" data-ui="#delete"><i>delete</i><span>Delete</span></button></nav></footer><!--]--></main></div><div id="teleports"></div><script type="application/json" id="__NUXT_DATA__" data-ssr="true" data-src="/management/applications/add/_payload.json">[{"state":1,"once":3,"_errors":5,"serverRendered":7,"path":8,"prerenderedAt":9},["Reactive",2],{},["Reactive",4],["Set"],["Reactive",6],{},true,"/management/applications/add",1715215597860]</script>
+<script>window.__NUXT__={};window.__NUXT__.config={public:{supabase:{url:"https://auenwngpifabaztfboej.supabase.co",key:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF1ZW53bmdwaWZhYmF6dGZib2VqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTA1MDc3NzksImV4cCI6MjAyNjA4Mzc3OX0.l2pfDtaKR5qgj7sqgHvr8HHRlbUiVa4RTgdjdBNsBkQ",redirect:true,redirectOptions:{login:"/login",callback:"/confirm",exclude:[],cookieRedirect:false,include:["/logout"]},cookieName:"sb",cookieOptions:{maxAge:28800,sameSite:"lax",secure:true},clientOptions:{auth:{flowType:"pkce",detectSessionInUrl:true,persistSession:true,autoRefreshToken:true}}},nuxtHighcharts:{pluginOptions:{},hcMods:["accessibility","annotations-advanced","annotations","arc-diagram","arrow-symbols","boost-canvas","boost","broken-axis","bullet","coloraxis","current-date-indicator","cylinder","data-tools","data","datagrouping","debugger","dependency-wheel","dotplot","drag-panes","draggable-points","drilldown","dumbbell","export-data","exporting","flowmap","full-screen","funnel","funnel3d","gantt","geoheatmap","grid-axis","heatmap","heikinashi","histogram-bellcurve","hollowcandlestick","item-series","lollipop","map","marker-clusters","mouse-wheel-zoom","navigator","networkgraph","no-data-to-display","offline-exporting","organization","overlapping-datalabels","parallel-coordinates","pareto","pathfinder","pattern-fill","pictorial","price-indicator","pyramid3d","sankey","series-label","series-on-point","solid-gauge","sonification","static-scale","stock-tools","stock","streamgraph","sunburst","tiledwebmap","tilemap","timeline","treegraph","treegrid","treemap","variable-pie","variwide","vector","venn","windbarb","wordcloud","xrange"]}},app:{baseURL:"/",buildAssetsDir:"/_nuxt/",cdnURL:""}}</script></body></html>
