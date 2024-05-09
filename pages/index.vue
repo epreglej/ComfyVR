@@ -38,7 +38,7 @@ watch(searchQuery, (newSearchQuery) => {
 </script>
 
 <template>
-    <div class="main responsive right page active center-align">
+    <div class="main responsive page active center-align">
         <article
             class="top-margin medium-elevate medium-width center center-align middle-align surface"
         >
@@ -99,5 +99,11 @@ watch(searchQuery, (newSearchQuery) => {
                 </a>
             </div>
         </article>
+
+        <div class="center top-margin">
+            <a href="./login" class="small-text primary-text"
+                >administrator login</a
+            >
+        </div>
     </div>
 </template>

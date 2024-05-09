@@ -1,4 +1,6 @@
 <script setup>
+const user = useSupabaseUser();
+
 let record = inject("record");
 const headerTitle = ref();
 headerTitle.value = record.applicationName;
@@ -12,10 +14,7 @@ headerTitle.value = record.applicationName;
             </NuxtLink>
         </template>
         <template v-else>
-            <NuxtLink
-                to="/dashboard"
-                class="transparent circle large no-margin"
-            >
+            <NuxtLink to="/" class="transparent circle large no-margin">
                 <i>arrow_back</i>
             </NuxtLink>
         </template>
@@ -25,8 +24,11 @@ headerTitle.value = record.applicationName;
         </i>
         <h6 class="max left-align">{{ headerTitle }}</h6>
 
-        <NuxtLink to="/logout" class="transparent circle large">
+        <NuxtLink v-if="user" to="/logout" class="transparent circle large">
             <i>logout</i>
+        </NuxtLink>
+        <NuxtLink v-else to="/login" class="transparent circle large">
+            <i>login</i>
         </NuxtLink>
     </nav>
 </template>

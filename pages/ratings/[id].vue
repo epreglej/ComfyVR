@@ -242,7 +242,7 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
 </script>
 
 <template>
-    <div class="main responsive right page active center-align">
+    <div class="main responsive page active center-align">
         <article class="medium top-margin no-elevate surface">
             <div class="absolute center">
                 <div class="stickman-wrapper">
