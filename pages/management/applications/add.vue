@@ -15,21 +15,23 @@ const validationSchema = toTypedSchema(
         applicationName: zod.string().min(1),
         applicationIconLink: zod.string().url(),
         cameraMovement: zod.string(),
-        cameraMovementChoppy: zod.string(),
-        cameraMovementUnpredictable: zod.string(),
+        cameraMovementSmooth: zod.string(),
+        cameraMovementPredictable: zod.string(),
         cameraMovementAlternativeMethods: zod.string(),
         visualSettings: zod.string(),
         visualSettingsSubtitles: zod.string(),
         visualSettingsVFX: zod.string(),
         visualSettingsColorblind: zod.string(),
-        auditorySettings: zod.string(),
-        auditorySettingsScreenReader: zod.string(),
-        auditorySettingsEqualizer: zod.string(),
-        auditorySettingsSpatialAudio: zod.string(),
+        soundSettings: zod.string(),
+        soundSettingsScreenReader: zod.string(),
+        soundSettingsEqualizer: zod.string(),
+        soundSettingsSpatialAudio: zod.string(),
         inputSettings: zod.string(),
         inputSettingsAlternativeMovement: zod.string(),
         inputSettingsRemapping: zod.string(),
         inputSettingsAimAssist: zod.string(),
+        guardianSystem: zod.string(),
+        sensitiveContentToggleable: zod.string(),
     }),
 );
 
@@ -45,16 +47,16 @@ const { value: cameraMovement } = useField("cameraMovement", zod.boolean(), {
     initialValue: "false",
 });
 
-const { value: cameraMovementChoppy } = useField(
-    "cameraMovementChoppy",
+const { value: cameraMovementSmooth } = useField(
+    "cameraMovementSmooth",
     zod.boolean(),
     {
         initialValue: "false",
     },
 );
 
-const { value: cameraMovementUnpredictable } = useField(
-    "cameraMovementUnpredictable",
+const { value: cameraMovementPredictable } = useField(
+    "cameraMovementPredictable",
     zod.boolean(),
     {
         initialValue: "false",
@@ -101,32 +103,32 @@ const { value: visualSettingsColorblind } = useField(
     },
 );
 
-const { value: auditorySettings } = useField(
-    "auditorySettings",
+const { value: soundSettings } = useField(
+    "soundSettings",
     zod.boolean(),
     {
         initialValue: "false",
     },
 );
 
-const { value: auditorySettingsScreenReader } = useField(
-    "auditorySettingsScreenReader",
+const { value: soundSettingsScreenReader } = useField(
+    "soundSettingsScreenReader",
     zod.boolean(),
     {
         initialValue: "false",
     },
 );
 
-const { value: auditorySettingsEqualizer } = useField(
-    "auditorySettingsEqualizer",
+const { value: soundSettingsEqualizer } = useField(
+    "soundSettingsEqualizer",
     zod.boolean(),
     {
         initialValue: "false",
     },
 );
 
-const { value: auditorySettingsSpatialAudio } = useField(
-    "auditorySettingsSpatialAudio",
+const { value: soundSettingsSpatialAudio } = useField(
+    "soundSettingsSpatialAudio",
     zod.boolean(),
     {
         initialValue: "false",
@@ -165,10 +167,28 @@ const { value: inputSettingsAimAssist } = useField(
     },
 );
 
+const { value: guardianSystem } = useField(
+    "guardianSystem",
+    zod.boolean(),
+    {
+        initialValue: "false",
+    },
+);
+
+const { value: sensitiveContentToggleable } = useField(
+    "sensitiveContentToggleable",
+    zod.boolean(),
+    {
+        initialValue: "false",
+    },
+);
+
+
+
 watch(cameraMovement, (newValue) => {
     if (newValue === "false") {
-        cameraMovementChoppy.value = "false";
-        cameraMovementUnpredictable.value = "false";
+        cameraMovementSmooth.value = "false";
+        cameraMovementPredictable.value = "false";
         cameraMovementAlternativeMethods.value = "false";
     }
 });
@@ -181,11 +201,11 @@ watch(visualSettings, (newValue) => {
     }
 });
 
-watch(auditorySettings, (newValue) => {
+watch(soundSettings, (newValue) => {
     if (newValue === "false") {
-        auditorySettingsScreenReader.value = "false";
-        auditorySettingsEqualizer.value = "false";
-        auditorySettingsSpatialAudio.value = "false";
+        soundSettingsScreenReader.value = "false";
+        soundSettingsEqualizer.value = "false";
+        soundSettingsSpatialAudio.value = "false";
     }
 });
 
@@ -203,27 +223,29 @@ const onSubmit = handleSubmit(async (values) => {
             applicationName: values.applicationName,
             applicationIconLink: values.applicationIconLink,
             cameraMovement: values.cameraMovement === "true",
-            cameraMovementChoppy: values.cameraMovementChoppy === "true",
-            cameraMovementUnpredictable: values.cameraMovementUnpredictable ==="true",
+            cameraMovementSmooth: values.cameraMovementSmooth === "true",
+            cameraMovementPredictable: values.cameraMovementPredictable ==="true",
             cameraMovementAlternativeMethods: values.cameraMovementAlternativeMethods === "true",
             visualSettings: values.visualSettings === "true",
             visualSettingsSubtitles: values.visualSettingsSubtitles === "true",
             visualSettingsVFX: values.visualSettingsVFX === "true",
             visualSettingsColorblind: values.visualSettingsColorblind === "true",
-            auditorySettings: values.auditorySettings === "true",
-            auditorySettingsScreenReader: values.auditorySettingsScreenReader === "true",
-            auditorySettingsEqualizer: values.auditorySettingsEqualizer === "true",
-            auditorySettingsSpatialAudio: values.auditorySettingsSpatialAudio === "true",
+            soundSettings: values.soundSettings === "true",
+            soundSettingsScreenReader: values.soundSettingsScreenReader === "true",
+            soundSettingsEqualizer: values.soundSettingsEqualizer === "true",
+            soundSettingsSpatialAudio: values.soundSettingsSpatialAudio === "true",
             inputSettings: values.inputSettings === "true",
             inputSettingsAlternativeMovement: values.inputSettingsAlternativeMovement === "true",
             inputSettingsRemapping: values.inputSettingsRemapping === "true",
             inputSettingsAimAssist: values.inputSettingsAimAssist === "true",
+            guardianSystem: values.guardianSystem === "true",
+            sensitiveContentToggleable: values.sensitiveContentToggleable === "true",
         });
 
         if (error) {
             console.error("Error during insert:", error);
         } else {
-          alert("New application added!");
+          alert("New application added successfully!");
           await navigateTo("/");
         }
     } catch (error) {
@@ -239,10 +261,10 @@ const onSubmit = handleSubmit(async (values) => {
             <article class="round">
                 <div class="horizontal-margin">
                     <form class="vertical" @submit.prevent="onSubmit">
-                    <p class="top-margin center-align"><h6 class="center-align">Form</h6></p>
+                    <p class="top-margin center-align"><h6 class="center-align">Add an application</h6></p>
                         <div class="top-margin large-margin">
                             <div
-                                class="field label border round no-margin"
+                                class="field label border round bottom-margin small-margin"
                                 :class="{ invalid: errors.applicationName }"
                             >
                                 <input
@@ -290,15 +312,15 @@ const onSubmit = handleSubmit(async (values) => {
                             v-if="cameraMovement && cameraMovement === 'true'"
                         >
                             <span class="large-text">
-                                Camera movement is choppy.
+                                Camera movement is smooth.
                             </span>
 
                             <label class="radio">
                                 <input
                                     type="radio"
-                                    name="cameraMovementChoppy"
+                                    name="cameraMovementSmooth"
                                     value="true"
-                                    v-model="cameraMovementChoppy"
+                                    v-model="cameraMovementSmooth"
                                 />
                                 <span>Yes</span>
                             </label>
@@ -306,9 +328,9 @@ const onSubmit = handleSubmit(async (values) => {
                             <label class="radio">
                                 <input
                                     type="radio"
-                                    name="cameraMovementChoppy"
+                                    name="cameraMovementSmooth"
                                     value="false"
-                                    v-model="cameraMovementChoppy"
+                                    v-model="cameraMovementSmooth"
                                 />
                                 <span>No</span>
                             </label>
@@ -319,15 +341,15 @@ const onSubmit = handleSubmit(async (values) => {
                             v-if="cameraMovement === 'true'"
                         >
                             <span class="large-text">
-                                Camera movement is unpredictable.
+                                Camera movement is predictable.
                             </span>
 
                             <label class="radio">
                                 <input
                                     type="radio"
-                                    name="cameraMovementUnpredictable"
+                                    name="cameraMovementPredictable"
                                     value="true"
-                                    v-model="cameraMovementUnpredictable"
+                                    v-model="cameraMovementPredictable"
                                 />
                                 <span>Yes</span>
                             </label>
@@ -335,9 +357,9 @@ const onSubmit = handleSubmit(async (values) => {
                             <label class="radio">
                                 <input
                                     type="radio"
-                                    name="cameraMovementUnpredictable"
+                                    name="cameraMovementPredictable"
                                     value="false"
-                                    v-model="cameraMovementUnpredictable"
+                                    v-model="cameraMovementPredictable"
                                 />
                                 <span>No</span>
                             </label>
@@ -487,7 +509,7 @@ const onSubmit = handleSubmit(async (values) => {
 
                         <div class="horizontal-margin top-margin vertical">
                             <span class="large-text">
-                                Application supports personalization of visual settings.
+                                Application supports visual settings customization.
                             </span>
 
                             <label class="radio">
@@ -600,15 +622,15 @@ const onSubmit = handleSubmit(async (values) => {
 
                         <div class="horizontal-margin top-margin vertical">
                             <span class="large-text">
-                                Application supports personalization of auditory settings.
+                                Application supports sound settings customization.
                             </span>
 
                             <label class="radio">
                                 <input
                                     type="radio"
-                                    name="auditorySettings"
+                                    name="soundSettings"
                                     value="true"
-                                    v-model="auditorySettings"
+                                    v-model="soundSettings"
                                 />
                                 <span>Yes</span>
                             </label>
@@ -616,9 +638,9 @@ const onSubmit = handleSubmit(async (values) => {
                             <label class="radio">
                                 <input
                                     type="radio"
-                                    name="auditorySettings"
+                                    name="soundSettings"
                                     value="false"
-                                    v-model="auditorySettings"
+                                    v-model="soundSettings"
                                 />
                                 <span>No</span>
                             </label>
@@ -626,7 +648,7 @@ const onSubmit = handleSubmit(async (values) => {
 
                         <div
                             class="horizontal-margin top-margin vertical"
-                            v-if="auditorySettings && auditorySettings === 'true'"
+                            v-if="soundSettings && soundSettings === 'true'"
                         >
                             <span class="large-text">
                                 Screen reader supported.
@@ -635,9 +657,9 @@ const onSubmit = handleSubmit(async (values) => {
                             <label class="radio">
                                 <input
                                     type="radio"
-                                    name="auditorySettingsScreenReader"
+                                    name="soundSettingsScreenReader"
                                     value="true"
-                                    v-model="auditorySettingsScreenReader"
+                                    v-model="soundSettingsScreenReader"
                                 />
                                 <span>Yes</span>
                             </label>
@@ -645,9 +667,9 @@ const onSubmit = handleSubmit(async (values) => {
                             <label class="radio">
                                 <input
                                     type="radio"
-                                    name="auditorySettingsScreenReader"
+                                    name="soundSettingsScreenReader"
                                     value="false"
-                                    v-model="auditorySettingsScreenReader"
+                                    v-model="soundSettingsScreenReader"
                                 />
                                 <span>No</span>
                             </label>
@@ -655,7 +677,7 @@ const onSubmit = handleSubmit(async (values) => {
 
                         <div
                             class="horizontal-margin top-margin vertical"
-                            v-if="auditorySettings && auditorySettings === 'true'"
+                            v-if="soundSettings && soundSettings === 'true'"
                         >
                             <span class="large-text">
                                 Audio equalizer supported.
@@ -664,9 +686,9 @@ const onSubmit = handleSubmit(async (values) => {
                             <label class="radio">
                                 <input
                                     type="radio"
-                                    name="auditorySettingsEqualizer"
+                                    name="soundSettingsEqualizer"
                                     value="true"
-                                    v-model="auditorySettingsEqualizer"
+                                    v-model="soundSettingsEqualizer"
                                 />
                                 <span>Yes</span>
                             </label>
@@ -674,9 +696,9 @@ const onSubmit = handleSubmit(async (values) => {
                             <label class="radio">
                                 <input
                                     type="radio"
-                                    name="auditorySettingsEqualizer"
+                                    name="soundSettingsEqualizer"
                                     value="false"
-                                    v-model="auditorySettingsEqualizer"
+                                    v-model="soundSettingsEqualizer"
                                 />
                                 <span>No</span>
                             </label>
@@ -684,7 +706,7 @@ const onSubmit = handleSubmit(async (values) => {
 
                         <div
                             class="horizontal-margin top-margin vertical"
-                            v-if="auditorySettings && auditorySettings === 'true'"
+                            v-if="soundSettings && soundSettings === 'true'"
                         >
                             <span class="large-text">
                                 Spatial audio supported.
@@ -693,9 +715,9 @@ const onSubmit = handleSubmit(async (values) => {
                             <label class="radio">
                                 <input
                                     type="radio"
-                                    name="auditorySettingsSpatialAudio"
+                                    name="soundSettingsSpatialAudio"
                                     value="true"
-                                    v-model="auditorySettingsSpatialAudio"
+                                    v-model="soundSettingsSpatialAudio"
                                 />
                                 <span>Yes</span>
                             </label>
@@ -703,17 +725,73 @@ const onSubmit = handleSubmit(async (values) => {
                             <label class="radio">
                                 <input
                                     type="radio"
-                                    name="auditorySettingsSpatialAudio"
+                                    name="soundSettingsSpatialAudio"
                                     value="false"
-                                    v-model="auditorySettingsSpatialAudio"
+                                    v-model="soundSettingsSpatialAudio"
                                 />
                                 <span>No</span>
                             </label>
                         </div>
 
-                        <div class="top-margin large-margin">
+                        <div
+                            class="horizontal-margin top-margin vertical"
+                        >
+                            <span class="large-text">
+                                Guardian system supported / not required.
+                            </span>
+
+                            <label class="radio">
+                                <input
+                                    type="radio"
+                                    name="guardianSystem"
+                                    value="true"
+                                    v-model="guardianSystem"
+                                />
+                                <span>Yes</span>
+                            </label>
+
+                            <label class="radio">
+                                <input
+                                    type="radio"
+                                    name="guardianSystem"
+                                    value="false"
+                                    v-model="guardianSystem"
+                                />
+                                <span>No</span>
+                            </label>
+                        </div>
+
+                        <div
+                            class="horizontal-margin top-margin vertical"
+                        >
+                            <span class="large-text">
+                                Sensitive content doesn't exist / can be disabled.
+                            </span>
+
+                            <label class="radio">
+                                <input
+                                    type="radio"
+                                    name="sensitiveContentToggleable"
+                                    value="true"
+                                    v-model="sensitiveContentToggleable"
+                                />
+                                <span>Yes</span>
+                            </label>
+
+                            <label class="radio">
+                                <input
+                                    type="radio"
+                                    name="sensitiveContentToggleable"
+                                    value="false"
+                                    v-model="sensitiveContentToggleable"
+                                />
+                                <span>No</span>
+                            </label>
+                        </div>
+
+                        <div class="vertical-margin large-margin">
                             <div
-                                class="field label border round no-margin"
+                                class="field label border round bottom-margin medium-margin"
                                 :class="{ invalid: errors.applicationIconLink }"
                             >
                                 <input
@@ -729,6 +807,7 @@ const onSubmit = handleSubmit(async (values) => {
                                 />
                             </div>
                         </div>
+
 
                         <div class="top-margin large-margin center-align">
                             <button type="submit">Submit</button>

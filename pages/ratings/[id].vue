@@ -10,14 +10,14 @@ function calculateComfortRating(record) {
     let comfortPointCounter = 0;
     let totalComfortPoints = 0;
 
-    if (!record.cameraMovementChoppy) {
+    if (record.cameraMovementSmooth) {
         totalComfortPoints += 1;
         comfortPointCounter += 1;
     } else {
         totalComfortPoints += 1;
     }
 
-    if (!record.cameraMovementUnpredictable) {
+    if (record.cameraMovementPredictable) {
         totalComfortPoints += 1;
         comfortPointCounter += 1;
     } else {
@@ -52,14 +52,14 @@ function calculateComfortRating(record) {
         totalComfortPoints += 1;
     }
 
-    if (record.auditorySettings) {
+    if (record.soundSettings) {
         totalComfortPoints += 1;
         comfortPointCounter += 1;
     } else {
         totalComfortPoints += 1;
     }
 
-    if (record.auditorySettingsEqualizer) {
+    if (record.soundSettingsEqualizer) {
         totalComfortPoints += 1;
         comfortPointCounter += 1;
     } else {
@@ -129,21 +129,21 @@ function calculateAccessibilityRating(record) {
         totalAccessibilityPoints += 1;
     }
 
-    if (record.auditorySettings) {
+    if (record.soundSettings) {
         totalAccessibilityPoints += 1;
         accessibilityPointCounter += 1;
     } else {
         totalAccessibilityPoints += 1;
     }
 
-    if (record.auditorySettingsScreenReader) {
+    if (record.soundSettingsScreenReader) {
         totalAccessibilityPoints += 1;
         accessibilityPointCounter += 1;
     } else {
         totalAccessibilityPoints += 1;
     }
 
-    if (record.auditorySettingsSpatialAudio) {
+    if (record.soundSettingsSpatialAudio) {
         totalAccessibilityPoints += 1;
         accessibilityPointCounter += 1;
     } else {
@@ -190,14 +190,14 @@ function calculateSafetyRating(record) {
     let safetyPointCounter = 0;
     let totalSafetyPoints = 0;
 
-    if (!record.cameraMovementChoppy) {
+    if (record.cameraMovementSmooth) {
         totalSafetyPoints += 1;
         safetyPointCounter += 1;
     } else {
         totalSafetyPoints += 1;
     }
 
-    if (!record.cameraMovementUnpredictable) {
+    if (record.cameraMovementPredictable) {
         totalSafetyPoints += 1;
         safetyPointCounter += 1;
     } else {
@@ -211,7 +211,7 @@ function calculateSafetyRating(record) {
         totalSafetyPoints += 1;
     }
 
-    if (record.auditorySettings) {
+    if (record.soundSettings) {
         totalSafetyPoints += 1;
         safetyPointCounter += 1;
     } else {
@@ -376,12 +376,13 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
         <dialog id="head-dialog" class="left-align">
             <h6 class="bold">Comfort</h6>
             <ul class="small-margin">
-                <li v-if="record.cameraMovementChoppy">
-                    Camera movement may look choppy, resulting in
+                <li v-if="!record.cameraMovementSmooth">
+                    Camera movement not smooth, may result in
                     <span class="bold"> headache </span>
                 </li>
-                <li v-if="record.cameraMovementUnpredictable">
-                    Camera may move unexpectedly or shake a lot, resulting in
+                <li v-if="!record.cameraMovementPredictable">
+                    Camera moves unexpectedly, shakes a lot or makes unexpected
+                    turns, may result in
                     <span class="bold">headache</span> and
                     <span class="bold"> disorientation</span>
                 </li>
@@ -422,12 +423,13 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
 
             <h6 class="bold">Safety</h6>
             <ul class="small-margin">
-                <li v-if="record.cameraMovementChoppy">
-                    Camera movement may look choppy, resulting in
+                <li v-if="!record.cameraMovementSmooth">
+                    Camera movement not smooth, may result in
                     <span class="bold">dizziness</span>
                 </li>
-                <li v-if="record.cameraMovementUnpredictable">
-                    Camera may move unexpectedly or shake a lot, resulting in
+                <li v-if="!record.cameraMovementPredictable">
+                    Camera moves unexpectedly, shakes a lot or makes unexpected
+                    turns, may result in
                     <span class="bold">dizziness</span>
                 </li>
                 <li v-if="!record.visualSettingsVFX">
@@ -452,11 +454,11 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
             <h5 class="bold">Comfort</h5>
 
             <ul class="small-margin">
-                <li v-if="!record.auditorySettings">
+                <li v-if="!record.soundSettings">
                     Audiotory settings not customizable, may result in
                     <span class="bold">ear discomfort</span>
                 </li>
-                <li v-if="!record.auditorySettingsEqualizer">
+                <li v-if="!record.soundSettingsEqualizer">
                     Audio equalizer not supported, may result in
                     <span class="bold">ear discomfort</span> and
                     <span class="bold">frustration</span> (e.g. some sounds are
@@ -472,16 +474,16 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
                     <span class="bold">diminished experience</span> and
                     <span class="bold">unusability</span>
                 </li>
-                <li v-if="!record.auditorySettings">
+                <li v-if="!record.soundSettings">
                     Audiotory settings not customizable, may result in
                     <span class="bold">diminished experience</span> and
                     <span class="bold">unusability</span>
                 </li>
-                <li v-if="!record.auditorySettingsScreenReader">
+                <li v-if="!record.soundSettingsScreenReader">
                     Audio equalizer not supported, may result in
                     <span class="bold">diminished experience</span>
                 </li>
-                <li v-if="!record.auditorySettingsSpatialAudio">
+                <li v-if="!record.soundSettingsSpatialAudio">
                     Spatial audio not supported, may result in
                     <span class="bold">disorientation</span>
                 </li>
@@ -489,7 +491,7 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
 
             <h5 class="bold">Safety</h5>
             <ul class="small-margin">
-                <li v-if="!record.auditorySettings">
+                <li v-if="!record.soundSettings">
                     Audiotory settings not customizable, may result in
                     <span class="bold">hearing loss</span>
                 </li>
@@ -532,13 +534,13 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
                     <span class="bold">unusability</span>
                 </li>
 
-                <li v-if="!record.auditorySettingsScreenReader">
+                <li v-if="!record.soundSettingsScreenReader">
                     Screen reader not supported, may result in
                     <span class="bold">diminished experience</span> and
                     <span class="bold">unusability</span>
                 </li>
 
-                <li v-if="!record.auditorySettingsSpatialAudio">
+                <li v-if="!record.soundSettingsSpatialAudio">
                     Spatial audio not supported, may result in
                     <span class="bold">disorientation</span>
                 </li>
@@ -556,12 +558,13 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
             <h6 class="bold">Comfort</h6>
 
             <ul class="small-margin">
-                <li v-if="record.cameraMovementChoppy">
-                    Camera movement may look choppy, resulting in
+                <li v-if="!record.cameraMovementSmooth">
+                    Camera movement not smooth, may result in
                     <span class="bold">nausea</span>
                 </li>
-                <li v-if="record.cameraMovementUnpredictable">
-                    Camera may move unexpectedly or shake a lot, resulting in
+                <li v-if="!record.cameraMovementPredictable">
+                    Camera moves unexpectedly, shakes a lot or makes unexpected
+                    turns, may result in
                     <span class="bold">nausea</span>
                 </li>
                 <li v-if="!record.inputSettingsAlternativeMovement">
