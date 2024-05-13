@@ -428,12 +428,14 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
                 <li v-if="!record.cameraMovementAlternativeMethods">
                     Alternative camera movement methods (e.g. snap turning) not
                     supported, may result in
-                    <span class="bold">discomfort</span> and
-                    <span class="bold"> headache</span>
+                    <span class="bold">headache</span> and
+                    <span class="bold">motion sickness</span>.
                 </li>
                 <li v-if="!record.inputSettingsAlternativeMovement">
                     Alternative movement methods (e.g. teleportation) not
-                    supported, may result in <span class="bold">headache</span>
+                    supported, may result in
+                    <span class="bold">headache</span> and
+                    <span class="bold">motion sickness</span>.
                 </li>
                 <li v-if="!record.guardianSystem">
                     Guardian system not supported, may result in
@@ -442,7 +444,7 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
                 <li v-if="!record.sensitiveContentToggleable">
                     Contains sensitive content that can't be disabled, may
                     result in
-                    <span class="bold">discomfort</span>.
+                    <span class="bold">psychological discomfort</span>.
                 </li>
             </ul>
 
@@ -462,7 +464,7 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
                     not supported, may result in
                     <span class="bold">straining</span>,
                     <span class="bold">disorientation</span> and
-                    <span class="bold">difficulty</span> when interacting
+                    <span class="bold">difficulty interacting</span>.
                 </li>
 
                 <li v-if="!record.visualSettingsSubtitles">
@@ -473,8 +475,9 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
 
                 <li v-if="!record.visualSettingsVFX">
                     VFX intensity not customizable, may result in
-                    <span class="bold">headache</span> and
-                    <span class="bold">confusion</span>
+                    <span class="bold">headache</span>,
+                    <span class="bold">confusion</span> and
+                    <span class="bold">overwhelmedness</span>.
                 </li>
             </ul>
 
@@ -499,15 +502,16 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
                 <li v-if="!record.cameraMovementPredictable">
                     Camera moves unexpectedly, shakes a lot or makes unexpected
                     turns, may result in
-                    <span class="bold">dizziness</span>
+                    <span class="bold">dizziness</span>.
                 </li>
                 <li v-if="!record.visualSettingsVFX">
                     VFX intensity not customizable, may result in
-                    <span class="bold">seizures</span>
+                    <span class="bold">seizures</span>.
                 </li>
                 <li v-if="!record.inputSettingsAlternativeMovement">
                     Alternative movement methods (e.g. teleportation) not
-                    supported, may result in <span class="bold">dizziness</span>
+                    supported, may result in
+                    <span class="bold">dizziness</span>.
                 </li>
                 <li v-if="!record.guardianSystem">
                     Guardian system not supported, may result in
@@ -543,7 +547,7 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
                 <li v-if="!record.soundSettingsEqualizer">
                     Sound equalizer / separate volume controls not supported,
                     may result in
-                    <span class="bold">ear discomfort</span> and
+                    <span class="bold">discomfort</span> and
                     <span class="bold">frustration</span> (e.g. some sounds are
                     too loud others too quiet).
                 </li>
@@ -563,8 +567,7 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
                 </li>
                 <li v-if="!record.visualSettingsSubtitles">
                     Subtitles not available, may result in
-                    <span class="bold">diminished experience</span> and
-                    <span class="bold">unusability</span>
+                    <span class="bold">information loss</span>.
                 </li>
                 <li v-if="!record.soundSettings">
                     Sound settings not customizable, may result in
@@ -574,7 +577,7 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
                 <li v-if="!record.soundSettingsEqualizer">
                     Sound equalizer / separate volume controls not supported,
                     may result in
-                    <span class="bold">difficulty</span> or
+                    <span class="bold">difficulty</span> and
                     <span class="bold">inability</span> to hear specific sounds.
                 </li>
                 <li v-if="!record.soundSettingsSpatialAudio">
@@ -613,11 +616,13 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
                 </li>
                 <li v-if="!record.visualSettingsVFX">
                     VFX intensity not customizable, may result in
-                    <span class="bold">eye strain</span>
+                    <span class="bold">eye strain</span>,
+                    <span class="bold">headache</span> and
+                    <span class="bold">overwhelmedness</span>.
                 </li>
                 <li v-if="!record.visualSettingsColorblind">
                     Colorblind mode not available, may result in
-                    <span class="bold">eye strain</span>
+                    <span class="bold">eye strain</span>.
                 </li>
             </ul>
 
@@ -636,21 +641,20 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
                 <li v-if="!record.visualSettings">
                     Visual settings not customizable, may result in
                     <span class="bold">diminished experience</span> and
-                    <span class="bold">unusability</span>
+                    <span class="bold">unusability</span>.
                 </li>
                 <li v-if="!record.visualSettingsColorblind">
                     Colorblind mode not available, may result in
-                    <span class="bold">diminished experience</span> and
-                    <span class="bold">unusability</span>
+                    <span class="bold">lower usability</span>.
                 </li>
                 <li v-if="!record.soundSettingsScreenReader">
                     Screen reader not supported, may result in
-                    <span class="bold">diminished experience</span> and
-                    <span class="bold">unusability</span>
+                    <span class="bold">information loss</span> and
+                    <span class="bold">unusability</span>.
                 </li>
                 <li v-if="!record.soundSettingsSpatialAudio">
                     Spatial audio not supported, may result in
-                    <span class="bold">disorientation</span>
+                    <span class="bold">disorientation</span>.
                 </li>
             </ul>
 
@@ -681,16 +685,17 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
                 </li>
                 <li v-if="!record.cameraMovementSmooth">
                     Camera movement not smooth, may result in
-                    <span class="bold">nausea</span>
+                    <span class="bold">nauseousness</span>
                 </li>
                 <li v-if="!record.cameraMovementPredictable">
                     Camera moves unexpectedly, shakes a lot or makes unexpected
                     turns, may result in
-                    <span class="bold">nausea</span>
+                    <span class="bold">nauseousness</span>
                 </li>
                 <li v-if="!record.inputSettingsAlternativeMovement">
                     Alternative movement methods (e.g. teleportation) not
-                    supported, may result in <span class="bold">nausea</span>
+                    supported, may result in
+                    <span class="bold">nauseousness</span>
                 </li>
             </ul>
 
@@ -702,7 +707,7 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
                 <li v-if="!record.cameraMovementAlternativeMethods">
                     Alternative camera movement methods (e.g. snap turning) not
                     supported, may result in
-                    <span class="bold">motion sickness</span>
+                    <span class="bold">motion sickness</span>.
                 </li>
             </ul>
 
@@ -759,8 +764,8 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
                     <span class="bold">unusability</span>
                 </li>
                 <li v-if="!record.inputSettingsAimAssist">
-                    Aim assist not available, may result in
-                    <span class="bold">diminished experience</span> and
+                    Aim assistance not available, may result in
+                    <span class="bold">lower usability</span> and
                     <span class="bold">frustration</span>
                 </li>
             </ul>
@@ -827,9 +832,8 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
                 <li v-if="!record.inputSettingsAlternativeMovement">
                     Alternative movement methods (e.g. teleportation) not
                     supported, may result in
-                    <span class="bold">falling over</span> (e.g. user is trying
-                    to reach for something that is too far because his leg
-                    mobility is limited)
+                    <span class="bold">leg straining</span> and
+                    <span class="bold">injury</span>.
                 </li>
                 <li v-if="!record.guardianSystem">
                     Guardian system not supported, may result in
