@@ -567,7 +567,7 @@ const onSubmit = handleSubmit(async (values) => {
                             v-if="visualSettings && visualSettings === 'true'"
                         >
                             <span class="large-text">
-                                VFX intensity personalization supported.
+                                VFX intensity customization supported.
                             </span>
 
                             <label class="radio">

@@ -87,6 +87,20 @@ function calculateComfortRating(record) {
         totalComfortPoints += 1;
     }
 
+    if (record.guardianSystem) {
+        totalComfortPoints += 1;
+        comfortPointCounter += 1;
+    } else {
+        totalComfortPoints += 1;
+    }
+
+    if (record.sensitiveContentToggleable) {
+        totalComfortPoints += 1;
+        comfortPointCounter += 1;
+    } else {
+        totalComfortPoints += 1;
+    }
+
     return ((comfortPointCounter / totalComfortPoints) * 100).toFixed() + "%";
 }
 
@@ -219,6 +233,20 @@ function calculateSafetyRating(record) {
     }
 
     if (record.inputSettingsAlternativeMovement) {
+        totalSafetyPoints += 1;
+        safetyPointCounter += 1;
+    } else {
+        totalSafetyPoints += 1;
+    }
+
+    if (record.guardianSystem) {
+        totalSafetyPoints += 1;
+        safetyPointCounter += 1;
+    } else {
+        totalSafetyPoints += 1;
+    }
+
+    if (record.sensitiveContentToggleable) {
         totalSafetyPoints += 1;
         safetyPointCounter += 1;
     } else {
@@ -376,15 +404,26 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
         <dialog id="head-dialog" class="left-align">
             <h6 class="bold">Comfort</h6>
             <ul class="small-margin">
+                <li
+                    v-if="
+                        record.cameraMovementSmooth &&
+                        record.cameraMovementPredictable &&
+                        record.inputSettingsAlternativeMovement &&
+                        record.guardianSystem &&
+                        record.sensitiveContentToggleable
+                    "
+                >
+                    Nothing to report.
+                </li>
                 <li v-if="!record.cameraMovementSmooth">
                     Camera movement not smooth, may result in
-                    <span class="bold"> headache </span>
+                    <span class="bold">headache</span>
                 </li>
                 <li v-if="!record.cameraMovementPredictable">
                     Camera moves unexpectedly, shakes a lot or makes unexpected
                     turns, may result in
-                    <span class="bold">headache</span> and
-                    <span class="bold"> disorientation</span>
+                    <span class="bold">disorientation</span> and
+                    <span class="bold">discomfort</span>
                 </li>
                 <li v-if="!record.cameraMovementAlternativeMethods">
                     Alternative camera movement methods (e.g. snap turning) not
@@ -396,10 +435,28 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
                     Alternative movement methods (e.g. teleportation) not
                     supported, may result in <span class="bold">headache</span>
                 </li>
+                <li v-if="!record.guardianSystem">
+                    Guardian system not supported, may result in
+                    <span class="bold">worry</span> about potential injury.
+                </li>
+                <li v-if="!record.sensitiveContentToggleable">
+                    Contains sensitive content that can't be disabled, may
+                    result in
+                    <span class="bold">discomfort</span>.
+                </li>
             </ul>
 
             <h6 class="bold">Accessibility</h6>
             <ul class="small-margin">
+                <li
+                    v-if="
+                        record.cameraMovementAlternativeMethods &&
+                        record.visualSettingsSubtitles &&
+                        record.visualSettingsVFX
+                    "
+                >
+                    Nothing to report.
+                </li>
                 <li v-if="!record.cameraMovementAlternativeMethods">
                     Alternative camera movement methods (e.g. voice commands)
                     not supported, may result in
@@ -423,6 +480,18 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
 
             <h6 class="bold">Safety</h6>
             <ul class="small-margin">
+                <li
+                    v-if="
+                        record.cameraMovementSmooth &&
+                        record.cameraMovementPredictable &&
+                        record.visualSettingsVFX &&
+                        record.inputSettingsAlternativeMovement &&
+                        record.guardianSystem &&
+                        record.sensitiveContentToggleable
+                    "
+                >
+                    Nothing to report.
+                </li>
                 <li v-if="!record.cameraMovementSmooth">
                     Camera movement not smooth, may result in
                     <span class="bold">dizziness</span>
@@ -440,6 +509,15 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
                     Alternative movement methods (e.g. teleportation) not
                     supported, may result in <span class="bold">dizziness</span>
                 </li>
+                <li v-if="!record.guardianSystem">
+                    Guardian system not supported, may result in
+                    <span class="bold">head injuries</span>.
+                </li>
+                <li v-if="!record.sensitiveContentToggleable">
+                    Contains sensitive content that can't be disabled, may
+                    result in
+                    <span class="bold">psychological harm</span>.
+                </li>
             </ul>
 
             <nav class="center-align no-space">
@@ -451,37 +529,53 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
 
         <div class="overlay blur"></div>
         <dialog id="ears-dialog" class="left-align">
-            <h5 class="bold">Comfort</h5>
-
+            <h6 class="bold">Comfort</h6>
             <ul class="small-margin">
+                <li
+                    v-if="record.soundSettings && record.soundSettingsEqualizer"
+                >
+                    Nothing to report.
+                </li>
                 <li v-if="!record.soundSettings">
                     Audiotory settings not customizable, may result in
                     <span class="bold">ear discomfort</span>
                 </li>
                 <li v-if="!record.soundSettingsEqualizer">
-                    Audio equalizer not supported, may result in
+                    Sound equalizer / separate volume controls not supported,
+                    may result in
                     <span class="bold">ear discomfort</span> and
                     <span class="bold">frustration</span> (e.g. some sounds are
-                    too loud others too quiet, user just can't get the volume
-                    right)
+                    too loud others too quiet).
                 </li>
             </ul>
 
-            <h5 class="bold">Accessibility</h5>
+            <h6 class="bold">Accessibility</h6>
             <ul class="small-margin">
+                <li
+                    v-if="
+                        record.visualSettingsSubtitles &&
+                        record.soundSettings &&
+                        record.soundSettingsEqualizer &&
+                        record.soundSettingsSpatialAudio
+                    "
+                >
+                    Nothing to report.
+                </li>
                 <li v-if="!record.visualSettingsSubtitles">
                     Subtitles not available, may result in
                     <span class="bold">diminished experience</span> and
                     <span class="bold">unusability</span>
                 </li>
                 <li v-if="!record.soundSettings">
-                    Audiotory settings not customizable, may result in
+                    Sound settings not customizable, may result in
                     <span class="bold">diminished experience</span> and
                     <span class="bold">unusability</span>
                 </li>
-                <li v-if="!record.soundSettingsScreenReader">
-                    Audio equalizer not supported, may result in
-                    <span class="bold">diminished experience</span>
+                <li v-if="!record.soundSettingsEqualizer">
+                    Sound equalizer / separate volume controls not supported,
+                    may result in
+                    <span class="bold">difficulty</span> or
+                    <span class="bold">inability</span> to hear specific sounds.
                 </li>
                 <li v-if="!record.soundSettingsSpatialAudio">
                     Spatial audio not supported, may result in
@@ -489,8 +583,9 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
                 </li>
             </ul>
 
-            <h5 class="bold">Safety</h5>
+            <h6 class="bold">Safety</h6>
             <ul class="small-margin">
+                <li v-if="record.soundSettings">Nothing to report.</li>
                 <li v-if="!record.soundSettings">
                     Audiotory settings not customizable, may result in
                     <span class="bold">hearing loss</span>
@@ -507,13 +602,19 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
         <div class="overlay blur"></div>
         <dialog id="eyes-dialog" class="left-align">
             <h6 class="bold">Comfort</h6>
-
             <ul class="small-margin">
+                <li
+                    v-if="
+                        record.visualSettingsVFX &&
+                        record.visualSettingsColorblind
+                    "
+                >
+                    Nothing to report.
+                </li>
                 <li v-if="!record.visualSettingsVFX">
                     VFX intensity not customizable, may result in
                     <span class="bold">eye strain</span>
                 </li>
-
                 <li v-if="!record.visualSettingsColorblind">
                     Colorblind mode not available, may result in
                     <span class="bold">eye strain</span>
@@ -522,28 +623,40 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
 
             <h6 class="bold">Accessibility</h6>
             <ul class="small-margin">
+                <li
+                    v-if="
+                        record.visualSettings &&
+                        record.visualSettingsColorblind &&
+                        record.soundSettingsScreenReader &&
+                        record.soundSettingsSpatialAudio
+                    "
+                >
+                    Nothing to report.
+                </li>
                 <li v-if="!record.visualSettings">
                     Visual settings not customizable, may result in
                     <span class="bold">diminished experience</span> and
                     <span class="bold">unusability</span>
                 </li>
-
                 <li v-if="!record.visualSettingsColorblind">
                     Colorblind mode not available, may result in
                     <span class="bold">diminished experience</span> and
                     <span class="bold">unusability</span>
                 </li>
-
                 <li v-if="!record.soundSettingsScreenReader">
                     Screen reader not supported, may result in
                     <span class="bold">diminished experience</span> and
                     <span class="bold">unusability</span>
                 </li>
-
                 <li v-if="!record.soundSettingsSpatialAudio">
                     Spatial audio not supported, may result in
                     <span class="bold">disorientation</span>
                 </li>
+            </ul>
+
+            <h6 class="bold">Safety</h6>
+            <ul class="small-margin">
+                <li>Nothing to report.</li>
             </ul>
 
             <nav class="center-align no-space">
@@ -556,8 +669,16 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
         <div class="overlay blur"></div>
         <dialog id="stomach-dialog" class="left-align">
             <h6 class="bold">Comfort</h6>
-
             <ul class="small-margin">
+                <li
+                    v-if="
+                        record.cameraMovementSmooth &&
+                        record.cameraMovementPredictable &&
+                        record.inputSettingsAlternativeMovement
+                    "
+                >
+                    Nothing to report.
+                </li>
                 <li v-if="!record.cameraMovementSmooth">
                     Camera movement not smooth, may result in
                     <span class="bold">nausea</span>
@@ -575,12 +696,21 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
 
             <h6 class="bold">Accessibility</h6>
             <ul class="small-margin">
+                <li v-if="record.cameraMovementAlternativeMethods">
+                    Nothing to report.
+                </li>
                 <li v-if="!record.cameraMovementAlternativeMethods">
                     Alternative camera movement methods (e.g. snap turning) not
                     supported, may result in
                     <span class="bold">motion sickness</span>
                 </li>
             </ul>
+
+            <h6 class="bold">Safety</h6>
+            <ul class="small-margin">
+                <li>Nothing to report.</li>
+            </ul>
+
             <nav class="center-align no-space">
                 <button class="transparent link" data-ui="#stomach-dialog">
                     Close
@@ -590,8 +720,13 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
 
         <div class="overlay blur"></div>
         <dialog id="arms-dialog" class="left-align">
-            <h5 class="bold">Comfort</h5>
+            <h6 class="bold">Comfort</h6>
             <ul class="margin">
+                <li
+                    v-if="record.inputSettings && record.inputSettingsRemapping"
+                >
+                    Nothing to report.
+                </li>
                 <li v-if="!record.inputSettings">
                     Input settings not customizable, may result in
                     <span class="bold">reduced comfort</span>
@@ -602,8 +737,17 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
                 </li>
             </ul>
 
-            <h5 class="bold">Accessibility</h5>
+            <h6 class="bold">Accessibility</h6>
             <ul class="margin">
+                <li
+                    v-if="
+                        record.inputSettings &&
+                        record.inputSettingsRemapping &&
+                        record.inputSettingsAimAssist
+                    "
+                >
+                    Nothing to report.
+                </li>
                 <li v-if="!record.inputSettings">
                     Input settings not customizable, may result in
                     <span class="bold">diminished experience</span> and
@@ -621,6 +765,14 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
                 </li>
             </ul>
 
+            <h6 class="bold">Safety</h6>
+            <ul class="small-margin">
+                <li v-if="record.guardianSystem">Nothing to report.</li>
+                <li v-if="!record.guardianSystem">
+                    Guardian system not supported, may result in
+                    <span class="bold">arm injury</span>.
+                </li>
+            </ul>
             <nav class="center-align no-space">
                 <button class="transparent link" data-ui="#arms-dialog">
                     Close
@@ -630,16 +782,25 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
 
         <div class="overlay blur"></div>
         <dialog id="legs-dialog" class="left-align">
-            <h5 class="bold">Comfort</h5>
+            <h6 class="bold">Comfort</h6>
             <ul class="margin">
+                <li v-if="record.inputSettings">Nothing to report.</li>
                 <li v-if="!record.inputSettings">
                     Input settings not customizable, may result in
                     <span class="bold">reduced comfort</span>
                 </li>
             </ul>
 
-            <h5 class="bold">Accessibility</h5>
+            <h6 class="bold">Accessibility</h6>
             <ul class="margin">
+                <li
+                    v-if="
+                        record.inputSettings &&
+                        record.inputSettingsAlternativeMovement
+                    "
+                >
+                    Nothing to report.
+                </li>
                 <li v-if="!record.inputSettings">
                     Input settings not customizable, may result in
                     <span class="bold">diminished experience</span> and
@@ -653,14 +814,26 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
                 </li>
             </ul>
 
-            <h5 class="bold">Safety</h5>
+            <h6 class="bold">Safety</h6>
             <ul class="margin">
+                <li
+                    v-if="
+                        record.inputSettingsAlternativeMovement &&
+                        record.guardianSystem
+                    "
+                >
+                    Nothing to report.
+                </li>
                 <li v-if="!record.inputSettingsAlternativeMovement">
                     Alternative movement methods (e.g. teleportation) not
                     supported, may result in
                     <span class="bold">falling over</span> (e.g. user is trying
                     to reach for something that is too far because his leg
                     mobility is limited)
+                </li>
+                <li v-if="!record.guardianSystem">
+                    Guardian system not supported, may result in
+                    <span class="bold">leg injury</span>.
                 </li>
             </ul>
             <nav class="center-align no-space">
