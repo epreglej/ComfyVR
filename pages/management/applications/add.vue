@@ -709,7 +709,7 @@ const onSubmit = handleSubmit(async (values) => {
                             v-if="soundSettings && soundSettings === 'true'"
                         >
                             <span class="large-text">
-                                Spatial / surround audio supported.
+                                Spatial / surround sound supported.
                             </span>
 
                             <label class="radio">

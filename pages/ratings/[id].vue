@@ -581,7 +581,7 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
                     <span class="bold">inability</span> to hear specific sounds.
                 </li>
                 <li v-if="!record.soundSettingsSpatialAudio">
-                    Spatial audio not supported, may result in
+                    Spatial / surround sound not supported, may result in
                     <span class="bold">disorientation</span>
                 </li>
             </ul>
@@ -653,7 +653,7 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
                     <span class="bold">unusability</span>.
                 </li>
                 <li v-if="!record.soundSettingsSpatialAudio">
-                    Spatial audio not supported, may result in
+                    Spatial / surround sound not supported, may result in
                     <span class="bold">disorientation</span>.
                 </li>
             </ul>
