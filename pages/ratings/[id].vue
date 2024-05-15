@@ -408,6 +408,7 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
                     v-if="
                         record.cameraMovementSmooth &&
                         record.cameraMovementPredictable &&
+                        record.visualSettingsVFX &&
                         record.inputSettingsAlternativeMovement &&
                         record.guardianSystem &&
                         record.sensitiveContentToggleable
@@ -430,6 +431,11 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
                     supported, may result in
                     <span class="bold">headache</span> and
                     <span class="bold">motion sickness</span>.
+                </li>
+                <li v-if="!record.visualSettingsVFX">
+                    VFX intensity not customizable, may result in
+                    <span class="bold">headache</span> and
+                    <span class="bold">overwhelmedness</span>.
                 </li>
                 <li v-if="!record.inputSettingsAlternativeMovement">
                     Alternative movement methods (e.g. teleportation) not
@@ -475,9 +481,8 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
 
                 <li v-if="!record.visualSettingsVFX">
                     VFX intensity not customizable, may result in
-                    <span class="bold">headache</span>,
-                    <span class="bold">confusion</span> and
-                    <span class="bold">overwhelmedness</span>.
+                    <span class="bold">disorientation</span> and
+                    <span class="bold">unusability</span>.
                 </li>
             </ul>
 
@@ -616,9 +621,7 @@ safetyRatingPercentage.value = parseInt(calculateSafetyRating(record));
                 </li>
                 <li v-if="!record.visualSettingsVFX">
                     VFX intensity not customizable, may result in
-                    <span class="bold">eye strain</span>,
-                    <span class="bold">headache</span> and
-                    <span class="bold">overwhelmedness</span>.
+                    <span class="bold">eye strain</span>.
                 </li>
                 <li v-if="!record.visualSettingsColorblind">
                     Colorblind mode not available, may result in
