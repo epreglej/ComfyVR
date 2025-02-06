@@ -10,6 +10,6 @@ Used technologies:
 - Supabase (remote database using a free tier subscription)
 
 # Homepage example
-![Alt text](https://drive.google.com/file/d/1UpZDZLC1sNYAPJAw2TQgiMjob_lp2T_b/view?usp=drive_link "comfy.vr homepage")
+![Alt text](https://drive.google.com/uc?export=view&id=1UpZDZLC1sNYAPJAw2TQgiMjob_lp2T_b "comfy.vr homepage")
 
 On the homepage user can search for the game they are interested about and click on it to see it's rating
