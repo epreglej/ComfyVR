@@ -15,19 +15,19 @@ This web application was developed in the process of trying to figure out what a
 On the homepage, users can search for the game they are interested in and click on it to see its rating.
 
 <p align="center">
-  <img src="https://drive.google.com/uc?export=view&id=1UpZDZLC1sNYAPJAw2TQgiMjob_lp2T_b" alt="comfy.vr homepage" />
+  <img src="https://drive.google.com/uc?export=view&id=1UpZDZLC1sNYAPJAw2TQgiMjob_lp2T_b" alt="comfy.vr homepage" style="max-height: 225px;" />
 </p>
 
 ### Sample application page
 On the sample application page, you can see the overall VR CAS score at the bottom of the page. You can click any of the body parts on the stickman to see what could limit your experience while using the application (related to the clicked body part).
 
 <p align="center">
-  <img src="https://drive.google.com/uc?export=view&id=1zw1Aj8A7Ig7bXnzCZYHCYbuQ1Dvff-xF" alt="comfy.vr sample application page" />
+  <img src="https://drive.google.com/uc?export=view&id=1zw1Aj8A7Ig7bXnzCZYHCYbuQ1Dvff-xF" alt="comfy.vr sample application page" style="max-height: 225px;" />
 </p>
 
 ### Sample dialog window
 Finally, when you click on the body part, a dialog window pops up with all the relevant information.
 
 <p align="center">
-  <img src="https://drive.google.com/uc?export=view&id=1CuiQMKHU76oENA_VYlOmzaqlzwymyhop" alt="comfy.vr sample dialog window" />
+  <img src="https://drive.google.com/uc?export=view&id=1CuiQMKHU76oENA_VYlOmzaqlzwymyhop" alt="comfy.vr sample dialog window" style="max-height: 225px;" />
 </p>
