@@ -1,0 +1,1 @@
+import{u as t,z as n}from"./wgMknUt8.js";const u={__name:"logout",setup(s){const e=t();async function r(){try{const{error:o}=await e.auth.signOut();o?console.error("Logout error!"):(console.log("Logout successful!"),await n("/login"))}catch(o){console.error("Unexpected error:",o)}}return r(),(o,a)=>"Logging out..."}};export{u as default};
