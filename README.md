@@ -47,9 +47,3 @@ In the image below you can see admin's interface when adding a new game to the d
   &nbsp;
   <img src="https://drive.google.com/uc?export=view&id=1FVhN0YVPfqB-1Mn6z_ib2jlPDS1CBKIj" alt="comfy.vr sample dialog window" height="350"/>
 </p>
-
-
-
-<p align="right">
--ePreglej 2024
-</p>
