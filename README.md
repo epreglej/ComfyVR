@@ -1,9 +1,9 @@
 # Comfy VR - Nuxt3 web application for VR CAS rating
 
 Comfy VR is currently hosted on: [comfy-vr.tech](https://comfy-vr.tech)  
-*(Data might not be accessible if the database went into automatic sleep mode due to resource usage.)*
+*(Data might not be accessible if the database went into automatic sleep mode due to resource saving mode)*
 
-This web application was developed during the process of trying to figure out what a good VR comfort, accessibility and safety system would look like.
+This web application was developed during the process of trying to figure out what a good VR comfort, accessibility and safety ranking system would look like.
 
 ## Used technologies
 - **Nuxt** (frontend and backend based on Vue and NitroJS frameworks)
@@ -13,7 +13,7 @@ This web application was developed during the process of trying to figure out wh
 ## Usage example
 
 ### Homepage
-On the homepage, users can search for the game they are interested in and click on it to see its rating.
+On the homepage, users can search for the game they are interested in and click on it to see it's rating.
 
 <p align="left">
   &nbsp;
@@ -22,7 +22,7 @@ On the homepage, users can search for the game they are interested in and click 
 
 
 ### Sample application page
-On the sample application page, you can see the overall VR CAS score at the bottom of the page. You can click any of the body parts on the stickman to see what could limit your experience while using the application (related to the clicked body part).
+On the sample application page, users can see the overall VR CAS score at the bottom of the page. They can click any of the body parts on the stickman to see what could limit their experience while using the application (related to the clicked body part).
 
 <p align="left">
   &nbsp;
@@ -31,7 +31,7 @@ On the sample application page, you can see the overall VR CAS score at the bott
 
 
 ### Sample dialog window
-Finally, when you click on the body part, a dialog window pops up with all the relevant information.
+Finally, when users click on the body part, a dialog window pops up with all the relevant information that was mentioned earlier.
 
 <p align="left">
   &nbsp;
