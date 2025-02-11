@@ -3,7 +3,7 @@
 Comfy VR is currently hosted on: [comfy-vr.tech](https://comfy-vr.tech)  
 *(Data might not be accessible if the database went into automatic sleep mode due to resource saving mode)*
 
-This web application was developed during the process of trying to figure out what a good VR comfort, accessibility and safety ranking system would look like.
+This web application was developed during the process of trying to figure out what a good VR comfort, accessibility and safety rating system would look like.
 
 ## Used technologies
 - **Nuxt** (frontend and backend based on Vue and NitroJS frameworks)
