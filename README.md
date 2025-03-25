@@ -1,7 +1,7 @@
 # Comfy VR - Nuxt3 web application for VR CAS rating
 
-Comfy VR is currently hosted on: [comfy-vr.tech](https://comfy-vr.tech)  
-*(Data might not be accessible if the database went into automatic sleep mode due to resource saving mode)*
+Comfy VR *was* hosted on: [comfy-vr.tech](https://comfy-vr.tech)  
+*(The domain hosting this project was not extended after March 2025)*
 
 This web application was developed during the process of trying to figure out what a good VR comfort, accessibility and safety rating system would look like.
 
